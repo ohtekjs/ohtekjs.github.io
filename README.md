@@ -1,2 +1,0 @@
-# ohtekJS
-Ohjelmistotekniikka (Javascript)
