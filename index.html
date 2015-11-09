@@ -96,24 +96,33 @@
 																	<h3 class="panel-title">Kokonaisluku taulukot</h3>
 																</div>
 																<div class="panel-body">
-																	Tarkistusfunktiot
-																</div>
+																<p><b>Kokonaislukutaulukon tarkasteluun kehittelimme funktion <code>isInteger()</code>, joka aluksi tarkistaa onko saatu parametri taulukko ja onko taulukossa edes arvoja. Mikäli vastaanotettu parametri on taulukko, niin käydään yksitellen jokainen taulukon alkio läpi.</b></p>
+																	<p><code>function isIntegerArray(x){
+																		if(!isArray(x) || x.length==0)
+																		return false;
+																		for (i = 0; i < x.length; i++) { 
+																		if(!Number.isInteger(x[i]))
+																		return false;
+																	}	
+																	return true;
+																}</code></p>
 															</div>
+														</div>
 
-															<div class="panel panel-default">
-																<div class="panel-heading">
-																	<h3 class="panel-title">Luku taulukot</h3>
-																</div>
-																<div class="panel-body">
-																	Tarkistusfunktiot
-																</div>
+														<div class="panel panel-default">
+															<div class="panel-heading">
+																<h3 class="panel-title">Luku taulukot</h3>
+															</div>
+															<div class="panel-body">
+																Tarkistusfunktiot
 															</div>
 														</div>
 													</div>
+												</div>
 
-													<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-													<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-													<!-- Include all compiled plugins (below), or include individual files 	as needed -->
-													<script src="js/bootstrap.min.js"></script>
-												</body>
-												</html>
+												<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+												<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+												<!-- Include all compiled plugins (below), or include individual files 	as needed -->
+												<script src="js/bootstrap.min.js"></script>
+											</body>
+											</html>
