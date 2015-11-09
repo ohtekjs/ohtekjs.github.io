@@ -63,7 +63,7 @@
 									<h3 class="panel-title">Luvut yleisesti</h3>
 								</div>
 								<div class="panel-body">
-								<p><b><code>Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</b></p>
+									<p><b><code>Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</b></p>
 									<p><code>Number.isFinite(2)
 										true</code></p>
 										<p><code>Number.isFinite(2.4)
@@ -81,33 +81,39 @@
 														<h3 class="panel-title">Merkkijonot</h3>
 													</div>
 													<div class="panel-body">
-													<p><b>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code>typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</b></p>
+														<p><b>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code>typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</b></p>
 														<p><code>function isString(x) { return typeof(x) === "string" }</code></p>
-													</div>
-												</div>
-												<div class="panel panel-default">
-													<div class="panel-heading">
-														<h3 class="panel-title">Kokonaisluku taulukot</h3>
-													</div>
-													<div class="panel-body">
-														Tarkistusfunktiot
-													</div>
-												</div>
+														<p><code>isString("x")
+															true</code></p>
+															<p><code>isString(2)
+																false</code></p>
+																<p><code>isString("x" + 2)
+																	true</code></p>
+																</div>
+															</div>
+															<div class="panel panel-default">
+																<div class="panel-heading">
+																	<h3 class="panel-title">Kokonaisluku taulukot</h3>
+																</div>
+																<div class="panel-body">
+																	Tarkistusfunktiot
+																</div>
+															</div>
 
-												<div class="panel panel-default">
-													<div class="panel-heading">
-														<h3 class="panel-title">Luku taulukot</h3>
+															<div class="panel panel-default">
+																<div class="panel-heading">
+																	<h3 class="panel-title">Luku taulukot</h3>
+																</div>
+																<div class="panel-body">
+																	Tarkistusfunktiot
+																</div>
+															</div>
+														</div>
 													</div>
-													<div class="panel-body">
-														Tarkistusfunktiot
-													</div>
-												</div>
-											</div>
-										</div>
 
-										<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-										<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-										<!-- Include all compiled plugins (below), or include individual files 	as needed -->
-										<script src="js/bootstrap.min.js"></script>
-									</body>
-									</html>
+													<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+													<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+													<!-- Include all compiled plugins (below), or include individual files 	as needed -->
+													<script src="js/bootstrap.min.js"></script>
+												</body>
+												</html>
