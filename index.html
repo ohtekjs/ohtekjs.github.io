@@ -114,7 +114,16 @@
 																<h3 class="panel-title">Luku taulukot</h3>
 															</div>
 															<div class="panel-body">
-																Tarkistusfunktiot
+															<p><b>Funktio <code>isNumberArray()</code> toimii täsmälleen samalla tavalla, kuin edellä mainittu <code>isIntegerArray()</code>, paitsi että alkioiden tarkistuksessa tarkastellaan vain onko alkio lukutyyppiä.</b></p>
+																	<p><code>function isNumberArray(x){
+																		if(!isArray(x) || x.length==0)
+																		return false;
+																		for (i = 0; i < x.length; i++) { 
+																		if(!Number.isFinite(x[i]))
+																		return false;
+																	}	
+																	return true;
+																}</code></p>
 															</div>
 														</div>
 													</div>
