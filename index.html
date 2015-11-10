@@ -111,8 +111,8 @@
                 }<br>
                 return true;<br>
             }<br>
-            </code>
-            <br>
+        </code>
+        <br>
         <code> isIntegerArray("x")
             <output>false</output>
             isIntegerArray(1)
@@ -144,6 +144,25 @@
                 }<br>
                 return true;<br>
             }<br>
+        </code>
+        <br>
+        <code>
+            isNumberArray()
+            <output>false</output>
+            isNumberArray([])
+            <output>false</output>
+            isNumberArray(["a",2])
+            <output>false</output>
+            isNumberArray([2,2])
+            <output>true</output>
+            isNumberArray([2.4,2])
+            <output>true</output>
+            isNumberArray([NaN,2])
+            <output>false</output>
+            isNumberArray([2])
+            <output>true</output>
+            isNumberArray([Infinity])
+            <output>false</output>
         </code>
     </div>
 </div>
