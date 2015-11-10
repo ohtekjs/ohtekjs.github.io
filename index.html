@@ -1,137 +1,171 @@
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Ohjelmointitekniikka (Javascript)</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-	<link href="css/template.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ohjelmointitekniikka (Javascript)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link href="css/template.css" rel="stylesheet">
 </head>
+
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Ohjelmointitekniikka (Javascript)</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="#viikko1">Viikko 1</a></li>
-					<li><a href="#viikko2">Viikko 2</a></li>
-					<li><a href="#viikko3">Viikko 3</a></li>
-				</ul>
-			</div><!--/.nav-collapse -->
-		</div>
-	</nav>
-	<div class="centered">
-		<h2>Jäsenet</h2>
-		<p>Antila, Eero</p>
-		<p>Kiiski, Leo</p>
-		<p>Laukkanen, Olli</p>
-		<p>Seppänen, Jukka-Pekka</p>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ohjelmointitekniikka (Javascript)</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#viikko1">Viikko 1</a></li>
+                    <li><a href="#viikko2">Viikko 2</a></li>
+                    <li><a href="#viikko3">Viikko 3</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="mainBody">
+        <div class="centered">
+            <h2>Jäsenet</h2>
+            <p>Antila, Eero</p>
+            <p>Kiiski, Leo</p>
+            <p>Laukkanen, Olli</p>
+            <p>Seppänen, Jukka-Pekka</p>
+        </div>
+        <h2 id="viikko1">Viikko 1</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Kokonaisluvut</h3>
+            </div>
+            <div class="panel-body">
+                <b><p><code>Number.isInteger()</code> tarkistaa onko syötteenä saatu arvo kokonaisluku</p></b>
+                <code>Number.isInteger(2)
+                <output>true</output>
+                Number.isInteger(2.4)
+                <output>false</output>              
+                Number.isInteger("s")
+                <output>false</output>               						
+                Number.isInteger("2")
+                <output>false</output>
+                Number.isInteger(2/4)
+                <output>false</output>
+                Number.isInteger(4/2)
+                <output>true</output>
+                </code>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Luvut yleisesti</h3>
+            </div>
+            <div class="panel-body">
+                <b><p><code>Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</p></b>
+                <code>Number.isFinite(2)
+				<output>true</output>
+                Number.isFinite(2.4)
+				<output>true</output>
+                Number.isFinite("2")
+				<output>false</output>
+                Number.isFinite(Infinity)
+				<output>false</output>
+                Number.isFinite(NaN)
+				<output>false</output>
+				</code>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Merkkijonot</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code>typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</p></b>
+                <code>function isString(x) { return typeof(x) === "string" }<br><br>
+                isString("x")
+				<output>true</output>
+                isString(2)
+				<output>false</output>
+                isString("x" + 2)
+				<output>true</output>
+				</code>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Kokonaisluku taulukot</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>Kokonaislukutaulukon tarkasteluun kehittelimme funktion <code>isIntegerArray()</code>, joka aluksi tarkistaa onko saatu parametri taulukko ja onko taulukossa edes arvoja. Mikäli vastaanotettu parametri on taulukko, niin käydään yksitellen jokainen taulukon alkio läpi.</p></b>
+                <code>function isIntegerArray(x){<br>
+				if(!isArray(x) || x.length==0)<br>
+				return false;<br>
+				for (i = 0; i < x.length; i++) {<br>
+				if(!Number.isInteger(x[i]))<br>
+				return false;<br>
+				}<br>
+				return true;<br>
+				}<br>
+				</code>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Luku taulukot</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>Funktio <code>isNumberArray()</code> toimii täsmälleen samalla tavalla, kuin edellä mainittu <code>isIntegerArray()</code>, paitsi että alkioiden tarkistuksessa tarkastellaan vain onko alkio lukutyyppiä.</p></b>
+                <code align="left">function isNumberArray(x){<br>
+				if(!isArray(x) || x.length==0)<br>
+				return false;<br>
+				for (i = 0; i < x.length; i++) { <br>
+				if(!Number.isFinite(x[i]))<br>
+				return false;<br>
+				}<br>
+				return true;<br>
+				}<br>
+				</code>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tyyppiturvallisuudesta yleisesti</h3>
+            </div>
+            <div class="panel-body">
+            <b><p>Kuten kurssimateriaaleissa on mainittu, JavaScriptissä muuttujilla ei ole tyyppiä samaan tapaan kuin esimerkiksi Javassa.
+            Ei siis ole olemassa funktiota, joka yksiselitteisesti kertoisi jonkin muuttujan tyypin/luokan kuten Javan <code>class.getName()</code> -funktio.<br>
+            On kuitenkin useita keinoja, joilla muuttujan tyyppiä voi yrittää tiedustella. Näistä mikään ei kuitenkaan ole "idioottivarma", eli kielen sisäinen toiminta on hyvä olla hallussa.</p></b>
+            <h3>constructor -ominaisuuden käyttäminen</h3>
+            <p>Jokaisella objektilla on arvo <code>constructor</code> -muuttujalle, mutta riippuen siitä miten objekti alun perin luotiin, ja miten tätä tietoa aiotaan käyttää, ei siitä välttämättä ole mitään hyötyä. Yleisesti ottaen <code>constructor</code> -muuttujaa voi käyttää seuraavalla tavalla:</p>
+            <code>var lista = [1,2,3];<br>
+            myArray.constructor == Array
+            <output>true</output>
+            </code>
+            <b><p>Monissa tapauksissa tämä ei kuitenkaan toimi! :</b></p>
+            <code>
+                function teeJotain(){<br>
+                }<br>
+                teeJotain.prototype = {<br>
+                metodi1: function(){<br>
+                },<br>
+                metodi2: function(){<br>
+                }<br>
+                };<br>
+            </code>
+            <p>Objektit jotka on luotu komennolla <code>new teeJotain</code> omaavat</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files 	as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
 
-		<h2 id="viikko1">Viikko 1</h2>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Kokonaisluvut</h3>
-			</div>
-			<div class="panel-body">
-				<p><b><code>Number.isInteger()</code> tarkistaa onko syötteenä saatu arvo kokonaisluku</b></p>
-				<p><code>Number.isInteger(2)
-					true</code></p>
-					<p><code>Number.isInteger(2.4)
-						false</code></p>
-						<p><code>Number.isInteger("s")
-							false
-						</code></p>
-						<p><code>Number.isInteger("2")
-							false</code></p>
-							<p><code>Number.isInteger(2/4)
-								false</code></p>
-								<p><code>Number.isInteger(4/2)
-									true</code></p>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h3 class="panel-title">Luvut yleisesti</h3>
-								</div>
-								<div class="panel-body">
-									<p><b><code>Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</b></p>
-									<p><code>Number.isFinite(2)
-										true</code></p>
-										<p><code>Number.isFinite(2.4)
-											true</code></p>
-											<p><code>Number.isFinite("2")
-												false</code></p>
-												<p><code>Number.isFinite(Infinity)
-													false</code></p>
-													<p><code>Number.isFinite(NaN)
-														false</code></p>
-													</div>
-												</div>
-												<div class="panel panel-default">
-													<div class="panel-heading">
-														<h3 class="panel-title">Merkkijonot</h3>
-													</div>
-													<div class="panel-body">
-														<p><b>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code>typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</b></p>
-														<p><code>function isString(x) { return typeof(x) === "string" }</code></p>
-														<p><code>isString("x")
-															true</code></p>
-															<p><code>isString(2)
-																false</code></p>
-																<p><code>isString("x" + 2)
-																	true</code></p>
-																</div>
-															</div>
-															<div class="panel panel-default">
-																<div class="panel-heading">
-																	<h3 class="panel-title">Kokonaisluku taulukot</h3>
-																</div>
-																<div class="panel-body">
-																<p><b>Kokonaislukutaulukon tarkasteluun kehittelimme funktion <code>isIntegerArray()</code>, joka aluksi tarkistaa onko saatu parametri taulukko ja onko taulukossa edes arvoja. Mikäli vastaanotettu parametri on taulukko, niin käydään yksitellen jokainen taulukon alkio läpi.</b></p>
-																	<p><code>function isIntegerArray(x){
-																		if(!isArray(x) || x.length==0)
-																		return false;
-																		for (i = 0; i < x.length; i++) { 
-																		if(!Number.isInteger(x[i]))
-																		return false;
-																	}	
-																	return true;
-																}</code></p>
-															</div>
-														</div>
-
-														<div class="panel panel-default">
-															<div class="panel-heading">
-																<h3 class="panel-title">Luku taulukot</h3>
-															</div>
-															<div class="panel-body">
-															<p><b>Funktio <code>isNumberArray()</code> toimii täsmälleen samalla tavalla, kuin edellä mainittu <code>isIntegerArray()</code>, paitsi että alkioiden tarkistuksessa tarkastellaan vain onko alkio lukutyyppiä.</b></p>
-																	<p><code>function isNumberArray(x){
-																		if(!isArray(x) || x.length==0)
-																		return false;
-																		for (i = 0; i < x.length; i++) { 
-																		if(!Number.isFinite(x[i]))
-																		return false;
-																	}	
-																	return true;
-																}</code></p>
-															</div>
-														</div>
-													</div>
-												</div>
-
-												<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-												<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-												<!-- Include all compiled plugins (below), or include individual files 	as needed -->
-												<script src="js/bootstrap.min.js"></script>
-											</body>
-											</html>
+</html>

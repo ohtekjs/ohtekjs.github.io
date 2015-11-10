@@ -1,7 +1,21 @@
 body {
   padding-top: 50px;
 }
-.centered {
-  padding: 40px 15px;
-  text-align: center;
+
+h3,h2 {
+	text-align: center;
+	font-weight: bold;
 }
+
+output {
+	padding-bottom: 10px;
+	font-style: italic;
+}
+.mainBody {
+  padding: 40px 15px;
+}
+.centered{
+	text-align: center;
+}
+
+
