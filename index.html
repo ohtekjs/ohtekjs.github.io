@@ -140,7 +140,7 @@
             <b><p>Kuten kurssimateriaaleissa on mainittu, JavaScriptissä muuttujilla ei ole tyyppiä samaan tapaan kuin esimerkiksi Javassa.
             Ei siis ole olemassa funktiota, joka yksiselitteisesti kertoisi jonkin muuttujan tyypin/luokan kuten Javan <code>class.getName()</code> -funktio.<br>
             On kuitenkin useita keinoja, joilla muuttujan tyyppiä voi yrittää tiedustella. Näistä mikään ei kuitenkaan ole "idioottivarma", eli kielen sisäinen toiminta on hyvä olla hallussa.</p></b>
-            <h3>constructor -ominaisuuden käyttäminen</h3>
+            <h3><code>constructor</code> -ominaisuuden käyttäminen</h3>
             <p>Jokaisella objektilla on arvo <code>constructor</code> -muuttujalle, mutta riippuen siitä miten objekti alun perin luotiin, ja miten tätä tietoa aiotaan käyttää, ei siitä välttämättä ole mitään hyötyä. Yleisesti ottaen <code>constructor</code> -muuttujaa voi käyttää seuraavalla tavalla:</p>
             <code>var lista = [1,2,3];<br>
             myArray.constructor == Array
@@ -148,16 +148,161 @@
             </code>
             <b><p>Monissa tapauksissa tämä ei kuitenkaan toimi! :</b></p>
             <code>
-                function teeJotain(){<br>
+                function Asia(){<br>
                 }<br>
-                teeJotain.prototype = {<br>
+                Asia.prototype = {<br>
                 metodi1: function(){<br>
                 },<br>
                 metodi2: function(){<br>
                 }<br>
                 };<br>
+            </code><br>
+            <p>Objektit jotka on luotu komennolla <code>new Asia</code> omaavat <code>constructor</code> -muuttujan joka
+            osoittaa <code>Object</code>:iin, <b>ei</b> <code>Asia</code>:n</p>
+            <code>var asia = new Asia();<br>
+            asia.constructor<br>
+            <output>function Object() { [native code] }</output>
             </code>
-            <p>Objektit jotka on luotu komennolla <code>new teeJotain</code> omaavat</p>
+            vertaa:
+            <code>
+                myArray.constructor<br>
+                <output>function Array() { [native code] }</output>
+            </code>
+            <p>Jos et siis hallinnoi/tunne käyttämääsi kirjastoa/lähdekoodia, niin et voi luottaa siihen, että muuttujien "tyyppi"
+            on sama kuin sen nimi. Toinen esimerkki, jossa construktori ei vastaa muuttujan "tyyppiä", on tilanne jossa käytetään multiple inheritance:a</p>
+            <code>
+            function a() { this.foo = 1;}<br>
+            function b() { this.bar = 2; }<br>
+            b.prototype = new a(); // b perii a:n<br>
+            </code><br>
+            <p>taaskaan asiat eivät toimi odotetulla tavalla:</p>
+            <code>
+            var f = new b(); // initialisoidaan uusi muuttuja b:n konstruktorilla<br><br>
+            f.constructor == b<br>
+            <output>false</output>
+            f.constructor == a<br>
+            <output>true</output>
+            </code>
+            <p>b:n todellinen konstuktori on siis a!</p>
+            <code>
+            f.constructor<br>
+            <output>function a() { this.foo = 1;}</output>
+            </code>
+            <p>Voit siis saada odottamattomia paluuarvoja, jos objektin prototyypiksi on asetettu jokin muu objekti.</p>
+            <h3><code>instanceof</code> -operaattorin käyttö</h3>
+            <p><code>instanceof</code> -operaattorilla voi myös tutkia objektin tyyppiä, mutta silläkin on omat rajoitteensa:</p>
+            <code>
+            var myArray = [1,2,3];<br>
+            myArray instanceof Array;<br>
+            <output>true</output>
+            myArray instanceof Object;<br>
+            <output>true</output>
+            </code>
+            <p><code>instanceof</code> ei kuitenkaan toimi primitiiveillä:</p>
+            <code>
+            3 instanceof Number<br>
+            <output>false</output>
+            'abc' instanceof String<br>
+            <output>false</output>
+            true instanceof Boolean<br>
+            <output>false</output>
+            </code>
+            <p><code>instanceof</code> -operaattori vaatii wrapperin primitiiveille toimiakseen:</p>
+            <code>
+            new Number(3) instanceof Number<br>
+            <output>true</output>
+            </code>
+            <p>Ironisesti <code>.constructor</code> sen sijaan toimii primitiivien kanssa ongelmitta:</p>
+            <code>
+            3..constructor === Number //3:n jälkeen on 2 pistettä, koska JS tulkitsee ensimmäisen pisteen desimaalipisteenä<br>
+            <output>true</output>
+            'abc'.constructor === String<br>
+            <output>true</output>
+            true.constructor === Boolean<br>
+            <output>true</output>
+            </code>
+            <h3><code>.constructor.name</code> -muuttujan käyttö</h3>
+            <p>Jos halutaan siistimpi muoto objektin "tyypistä", niin voidaan pyytää konstruktorin <code>.name</code> -muuttujan arvoa:</p>
+            <code>
+            function Point2D(x,y){<br>
+            this.x = x;<br>
+            this.y = y;<br>
+            }<br>
+            var piste = new Point2D(5,10);<br>
+            piste.contructor<br>
+            <output>
+            function Point2D(x,y){<br>
+            this.x = x;<br>
+            this.y = y;<br>
+            }</output>
+            </code>
+            <p> mutta:</p>
+            <code>
+            piste.constructor.name<br>
+            <output>"Point2D"</output>
+            </code>
+            <p><code>.name</code> ei kuitenkaan ilmeisesti toimi kaikissa selaimissa/selainten versioissa</p>
+            <h3><code>Object.prototype.toString</code> käyttö</h3>
+            <p><code>Object.prototype.toString</code>:iä voi käyttää JavaScriptin natiiveille muuttujatyypeille:</p>
+            <code>
+            Object.prototype.toString.call('abc')<br>
+            <output>"[object String]"</output>
+            Object.prototype.toString.call(/abc/)<br>
+            <output>"[object RegExp]"</output>
+            Object.prototype.toString.call([1,2,3])<br>
+            <output>"[object Array]"</output>
+            </code>
+            <p>Pientä apufunktiota käyttämällä, saadaan paluuarvo sievään muotoon:</p>
+            <code>
+            function type(obj){<br>
+            return Object.prototype.toString.call(obj).slice(8, -1);<br>
+            }<br><br>
+            type('abc')<br>
+            <output>"String"</output>
+            </code>
+            <h3>Yhteenveto tyypin määrittelemisen problematiikasta</h3>
+            <p>Tyypin määrittelyn ongelmallisuus tulee siitä, että objekteja voidaan määritellä niin monella eri tapaa:</p>
+            <code>
+            // nimetyn funktion käyttäminen:<br>
+            function Foo() { this.a = 1; }<br>
+            var obj = new Foo();<br>
+            (obj instanceof Object);          // true<br>
+            (obj instanceof Foo);             // true<br>
+            (obj.constructor == Foo);         // true<br>
+            (obj.constructor.name == "Foo");  // true<br><br>
+
+            // prototyyppisen perinnän lisääminen:<br>
+            function Bar() { this.b = 2; }<br>
+            Foo.prototype = new Bar();<br>
+            obj = new Foo();<br>
+            (obj instanceof Object);          // true<br>
+            (obj instanceof Foo);             // true<br>
+            (obj.constructor == Foo);         // false<br>
+            (obj.constructor.name == "Foo");  // false<br><br>
+
+
+            // anonyymin funktion käyttö:<br>
+            obj = new (function() { this.a = 1; })();<br>
+            (obj instanceof Object);              // true<br>
+            (obj.constructor == obj.constructor); // true<br>
+            (obj.constructor.name == "");         // true<br><br>
+
+
+            // muuttujaan asetetun anonyymin funktion käyttö:<br>
+            var Foo = function() { this.a = 1; };<br>
+            obj = new Foo();<br>
+            (obj instanceof Object);      // true<br>
+            (obj instanceof Foo);         // true<br>
+            (obj.constructor == Foo);     // true<br>
+            (obj.constructor.name == ""); // true<br><br>
+
+
+            // objekti-literaali syntaksin käyttö:<br>
+            obj = { foo : 1 };<br>
+            (obj instanceof Object);            // true<br>
+            (obj.constructor == Object);        // true<br>
+            (obj.constructor.name == "Object"); // true<br><br>
+            </code>
             </div>
         </div>
     </div>

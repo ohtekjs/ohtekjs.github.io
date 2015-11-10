@@ -18,4 +18,14 @@ output {
 	text-align: center;
 }
 
+.panel-default{
+	width: 800px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+.panel-heading {
+	padding-top: 10px;
+}
+
 
