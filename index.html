@@ -346,71 +346,76 @@
 	</div>
 	<div class="panel-body">
 		<p>Poikkeus on tapahtuma joka tapahtuu kun ohjelman normaalissa suorituksessa ilmenee häiriö.
-			Javascriptin poikkeusten käsittely noudattaa Javalle tyypillistä try - catch - finally kaavaa, jossa poikkeuksia voidaan lisäksi heittää throw -komennolla.</p>
+			Javascriptin poikkeusten käsittely noudattaa Javalle tyypillistä <code>try - catch - finally</code> kaavaa, jossa poikkeuksia voidaan lisäksi heittää <code>throw</code> -komennolla.</p>
 
 			<p>Javascript on poikkeusten käsittelyssä perin vapaa, sillä poikkeuksen arvona voidaan heittää melkeinpä mitä tahansa. Poikkeuksena voidaan heittää vaikkapa merkkijono, luku tai funktio.</p>
 
-			<p>throw "Error3”; 	// tuottaa poikkeuksen merkkijonolla ”Error3”
-				throw 666;       	// tuottaa poikkeuksen arvolla 666
-				throw true;     	// tuottaa poikkeuksen arvolla true
-			</p>
+			<pre class="prettyprint">
+	throw "Error3";		// tuottaa poikkeuksen merkkijonolla ”Error3”
+	throw 666;		// tuottaa poikkeuksen arvolla 666
+	throw true;     	// tuottaa poikkeuksen arvolla true</pre>
 
 
-			<p><b>Poikkeuksena merkkijono:</b>
-				try {
-				throw ”Poikkeus tapahtunut”;
-			} catch(exception) {
-			alert(exception); 	//Käyttäjälle alert -ikkuna varoitus tekstillä.
-		}</p>
+			<b>Poikkeuksena merkkijono:</b>
+				<pre class="prettyprint">
+	try {
+		throw ”Poikkeus tapahtunut”;
+	} catch(exception) {
+		alert(exception); //Käyttäjälle alert -ikkuna varoitus tekstillä.
+	}</pre>
 
-		<p><b>Poikkeuksena luku:</b>
-			try {
-			throw 666;
-		} catch(exception) {
+			<b>Poikkeuksena luku:</b>
+				<pre class="prettyprint">
+	try {
+		throw 666;
+	} catch(exception) {
 		alert(exception); 	//Käyttäjälle alert -ikkuna tekstillä 666.
-	}</p>
+	}</pre>
 
-	<p><b>Poikkeuksena funktio:</b>
-		try {
+			<b>Poikkeuksena funktio:</b>
+				<pre class="prettyprint">
+	try {
 		throw function() { alert(”Poikkeus tapahtunut!”) };
 	} catch(exception) {
-	exception(); 	//Käyttäjälle alert -ikkuna varoitus tekstillä.
-}</p>
+		exception(); 	//Käyttäjälle alert -ikkuna varoitus tekstillä.
+	}</pre>
+		
 
-<p><b>Poikkeus voi heittää uuden poikkeuksen:</b>
+		<b>Poikkeus voi heittää uuden poikkeuksen:</b>
+			<pre class="prettyprint">
 	try {
-	throw n; // heittää poikkeuksen numeerisella arvolla
-} catch (e) {
-if (e <= 50) {
-// käsittelee virheet 1-50
-} else {
-// virhettä ei pystytä käsittelemään, joten heitetään se uudestaan
-throw e;
-}
-}</p>
+		throw n; // heittää poikkeuksen numeerisella arvolla
+	} catch (e) {
+		if (e <= 50) {	// käsittelee virheet 1-50
+		...
+		} else {	// virhettä ei voida käsitellä, heitetään se uudestaan
+			throw e;
+		}
+	}</pre>
 
 <p>Javascriptillä funktioita voidaan suorittaa käytännössä lähes kokonaan poikkeuksiin perustuen. Esimerkkinä funktio, joka käyttää poikkeuksia palautteen tulostamiseen:</p>
 
-<p>function myFunction(x) {
-	    try { 
-	        if(x == "") throw "empty";
-	        if(isNaN(x)) throw "not a number";
-	        x = Number(x);
-	        if(x < 5) throw "too low";
-	        if(x > 10) throw "too high";
-    }
-    catch(err) {
-        alert(”Input is " + err);
-    }
-}</p>
+<pre class="prettyprint">
+	function myFunction(x) {
+		try { 
+			if(x == "") throw "empty";
+			if(isNaN(x)) throw "not a number";
+			x = Number(x);
+			if(x < 5) throw "too low";
+			if(x > 10) throw "too high";
+		} catch(err) {
+			alert("Input is " + err);
+		}
+	}</pre>
 
 <p>Javascript sisältää myös oman Error konstruktorifunktion, jonka kentät name eli poikkeuksen nimi ”Error” ja messange, joka on siis poikkeuksen kuvaus. Käyttämällä poikkeusten käsittelyyn Error -konstuktoria, käyttäytyvät virheet samalla tavalla kuin Javascriptin omat poikkeukset.</p>
 
-<p>try {
-	throw new Error(”Poikkeus tapahtunut!”);
-} catch(exception) {
-alert(exception.message); 		//Käyttäjälle alert -ikkuna varoitus tekstillä.
-}</p>
+<pre class="prettyprint">
+	try {
+		throw new Error("Poikkeus tapahtunut!");
+	} catch(exception) {
+		alert(exception.message); //Käyttäjälle alert varoitus tekstillä.
+	}</pre>
 
 <p>Paras tapa virheiden käisttelyyn on käyttää Javascriptin valmista konstruktoria niin paljon kuin vain mahdollista. Mikäli virheen käsittely vaatii muun rakenteen, tehdään sille spesifinen virheen käsittelijä.</p>
 
@@ -422,6 +427,8 @@ alert(exception.message); 		//Käyttäjälle alert -ikkuna varoitus tekstillä.
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files 	as needed -->
 <script src="js/bootstrap.min.js"></script>
+<!-- Javascript code prettifier -->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </body>
 
 </html>
