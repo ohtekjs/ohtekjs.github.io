@@ -346,9 +346,27 @@
 	</div>
 	<div class="panel-body">
 		<p><b>Imperatiivinen</b></p>
-		<p>...</p>
+		<p>Imperatiivinen ohjelmointi on yleisin ohjelmointiparadigma, ja monelle ensimmäinen tai muuten tutuin tyyli ohjelmoida, minkä seurauksena se on monelle myös luonteva tyyli ohjelmoida. Imperatiivisessa ohjelmoinnissa ohjelman toiminta määritellään yksiselitteisesti vaiheittain ja ohjelman komennot suoritetaan järjestyksessä yksi kerrallaan. Yksinkertaistettuna imperatiivinen ohjelmointi on lista ohjeista tai vaiheista, jotka tietokoneen tulee suorittaa. Suorituksen tilan seuraamiseen ja muokkaamiseen käytetään muuttujia.</p>
+<p>Kertoma imperatiivisella toteutuksella:</p>
+<pre class="prettyprint">function factorial(n) {
+  var factorial = 1;
+  for(i = 1; i <= n; i++) {
+    factorial = factorial * i;
+  }
+  return factorial;
+}</pre>
 		<p><b>Funktionaalinen</b></p>
-		<p>...</p>
+		<p>Funktionaalinen ohjelmointi on lähestymiseltään matemaattisempi vaihtoehto. Puhtaasti funktionaalisessa ohjelmoinnissa ei käytetä muuttujia tilan seuraamisessa. Funktionaalinen ohjelmointi pohjautuu rekursioon ja funktiot viittaavat rekursiivisesti itseensä, tai toiseen funktioon. Funktionaalisessa ohjelmassa keskitytään enemmän siihen, mitä kone tekee, kuin miten se tekee sen. Funktionaalisen ohjelmoinnin eräs etu on sen selkeä yhteys matematiikkaan, jolloin matemaattiset funktiot voi helposti muotoilla vastaamaan määritelmää.</p>
+<p>Kertoma funktionaalisella toteutuksella:</p>
+<pre class="prettyprint">function factorial(n) {
+  if(n === 0) {
+    return 1;
+  } else {
+    return n*factorial(n-1);
+  }
+}</pre>
+<p><b>Kumpaa suosia?</b></p>
+<p>JavaScriptin vahvuus on sen kaksiparadigmallisuuden tuoma funktionaalisuus. Täten funktionaalisten ominaisuuksien hyödyntämättä jättäminen olisi haaskeliasta. Funktiosta riippuen, funktionaalisesti ohjelmoituna ohjelmasta voidaan saada merkittävästi lyhyempi ja elegantimpi, kuin imperatiivisesti. Toisaalta monimutkaisen funktionaalisen ohjelman lukeminen ja hahmottaminen voi olla vaikeampaa kuin imperatiivisen, varsinkin kun imperatiivinen ohjelmointi on monelle tutumpaa ja laajemmin käytössä. Kummassakaan paradigmassa ei suoranaisesti ole yleisellä tasolla mitään toista parempaa, vaan valinnan tulisi perustua ohjelman käyttötarpeeseen ja siihen mitä ohjelmoija haluaa saavuttaa. Koska JavaScript on nimenomaan kaksiparadigmallinen, parhaiten tätä tulee hyödynnettyä käyttämällä sekä imperatiivista, että funktionaalista ohjelmointia.</p>
 	</div>
 </div>
 <div class="panel panel-default">
