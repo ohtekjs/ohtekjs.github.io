@@ -1,342 +1,419 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ohjelmointitekniikka (Javascript)</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link href="css/template.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ohjelmointitekniikka (Javascript)</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<link href="css/template.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Ohjelmointitekniikka (Javascript)</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#viikko1">Viikko 1</a></li>
-                    <li><a href="#viikko2">Viikko 2</a></li>
-                    <li><a href="#viikko3">Viikko 3</a></li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </nav>
-    <div class="mainBody">
-        <div class="centered">
-            <h2>Jäsenet</h2>
-            <p>Antila, Eero</p>
-            <p>Kiiski, Leo</p>
-            <p>Laukkanen, Olli</p>
-            <p>Seppänen, Jukka-Pekka</p>
-        </div>
-        <h2 id="viikko1">Viikko 1</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Kokonaisluvut</h3>
-            </div>
-            <div class="panel-body">
-                <b><p><code>Number.isInteger()</code> tarkistaa onko syötteenä saatu arvo kokonaisluku</p></b>
-                <code>Number.isInteger(2)
-                    <output>true</output>
-                    Number.isInteger(2.4)
-                    <output>false</output>              
-                    Number.isInteger("s")
-                    <output>false</output>               						
-                    Number.isInteger("2")
-                    <output>false</output>
-                    Number.isInteger(2/4)
-                    <output>false</output>
-                    Number.isInteger(4/2)
-                    <output>true</output>
-                </code>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Luvut yleisesti</h3>
-            </div>
-            <div class="panel-body">
-                <b><p><code>Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</p></b>
-                <code>Number.isFinite(2)
-                    <output>true</output>
-                    Number.isFinite(2.4)
-                    <output>true</output>
-                    Number.isFinite("2")
-                    <output>false</output>
-                    Number.isFinite(Infinity)
-                    <output>false</output>
-                    Number.isFinite(NaN)
-                    <output>false</output>
-                </code>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Merkkijonot</h3>
-            </div>
-            <div class="panel-body">
-                <b><p>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code>typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</p></b>
-                <code>function isString(x) { return typeof(x) === "string" }<br><br>
-                    isString("x")
-                    <output>true</output>
-                    isString(2)
-                    <output>false</output>
-                    isString("x" + 2)
-                    <output>true</output>
-                </code>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Kokonaisluku taulukot</h3>
-            </div>
-            <div class="panel-body">
-                <b><p>Kokonaislukutaulukon tarkasteluun kehittelimme funktion <code>isIntegerArray()</code>, joka aluksi tarkistaa onko saatu parametri taulukko ja onko taulukossa edes arvoja. Mikäli vastaanotettu parametri on taulukko, niin käydään yksitellen jokainen taulukon alkio läpi.</p></b>
-                <code>function isIntegerArray(x){<br>
-                    if(!isArray(x) || x.length==0)<br>
-                    return false;<br>
-                    for (i = 0; i < x.length; i++) {<br>
-                    if(!Number.isInteger(x[i]))<br>
-                    return false;<br>
-                }<br>
-                return true;<br>
-            }<br>
-        </code>
-        <br>
-        <code> isIntegerArray("x")
-            <output>false</output>
-            isIntegerArray(1)
-            <output>false</output>
-            isIntegerArray()
-            <output>false</output>
-            isIntegerArray([])
-            <output>false</output>
-            isIntegerArray([1,2])
-            <output>true</output>
-            isIntegerArray(["1",2])
-            <output>false</output>
-            isIntegerArray([NaN])
-            <output>false</code>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Luku taulukot</h3>
-            </div>
-            <div class="panel-body">
-                <b><p>Funktio <code>isNumberArray()</code> toimii täsmälleen samalla tavalla, kuin edellä mainittu <code>isIntegerArray()</code>, paitsi että alkioiden tarkistuksessa tarkastellaan vain onko alkio lukutyyppiä.</p></b>
-                <code align="left">function isNumberArray(x){<br>
-                    if(!isArray(x) || x.length==0)<br>
-                    return false;<br>
-                    for (i = 0; i < x.length; i++) { <br>
-                    if(!Number.isFinite(x[i]))<br>
-                    return false;<br>
-                }<br>
-                return true;<br>
-            }<br>
-        </code>
-        <br>
-        <code>
-            isNumberArray()
-            <output>false</output>
-            isNumberArray([])
-            <output>false</output>
-            isNumberArray(["a",2])
-            <output>false</output>
-            isNumberArray([2,2])
-            <output>true</output>
-            isNumberArray([2.4,2])
-            <output>true</output>
-            isNumberArray([NaN,2])
-            <output>false</output>
-            isNumberArray([2])
-            <output>true</output>
-            isNumberArray([Infinity])
-            <output>false</output>
-        </code>
-    </div>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Ohjelmointitekniikka (Javascript)</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#viikko1">Viikko 1</a></li>
+					<li><a href="#viikko2">Viikko 2</a></li>
+					<li><a href="#viikko3">Viikko 3</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<div class="mainBody">
+		<div class="centered">
+			<h2>Jäsenet</h2>
+			<p>Antila, Eero</p>
+			<p>Kiiski, Leo</p>
+			<p>Laukkanen, Olli</p>
+			<p>Seppänen, Jukka-Pekka</p>
+		</div>
+		<h2 id="viikko1">Viikko 1</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Kokonaisluvut</h3>
+			</div>
+			<div class="panel-body">
+				<b><p><code>Number.isInteger()</code> tarkistaa onko syötteenä saatu arvo kokonaisluku</p></b>
+				<code>Number.isInteger(2)
+					<output>true</output>
+					Number.isInteger(2.4)
+					<output>false</output>              
+					Number.isInteger("s")
+					<output>false</output>               						
+					Number.isInteger("2")
+					<output>false</output>
+					Number.isInteger(2/4)
+					<output>false</output>
+					Number.isInteger(4/2)
+					<output>true</output>
+				</code>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Luvut yleisesti</h3>
+			</div>
+			<div class="panel-body">
+				<b><p><code>Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</p></b>
+				<code>Number.isFinite(2)
+					<output>true</output>
+					Number.isFinite(2.4)
+					<output>true</output>
+					Number.isFinite("2")
+					<output>false</output>
+					Number.isFinite(Infinity)
+					<output>false</output>
+					Number.isFinite(NaN)
+					<output>false</output>
+				</code>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Merkkijonot</h3>
+			</div>
+			<div class="panel-body">
+				<b><p>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code>typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</p></b>
+				<code>function isString(x) { return typeof(x) === "string" }<br><br>
+					isString("x")
+					<output>true</output>
+					isString(2)
+					<output>false</output>
+					isString("x" + 2)
+					<output>true</output>
+				</code>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Kokonaisluku taulukot</h3>
+			</div>
+			<div class="panel-body">
+				<b><p>Kokonaislukutaulukon tarkasteluun kehittelimme funktion <code>isIntegerArray()</code>, joka aluksi tarkistaa onko saatu parametri taulukko ja onko taulukossa edes arvoja. Mikäli vastaanotettu parametri on taulukko, niin käydään yksitellen jokainen taulukon alkio läpi.</p></b>
+				<code>function isIntegerArray(x){<br>
+					if(!isArray(x) || x.length==0)<br>
+					return false;<br>
+					for (i = 0; i < x.length; i++) {<br>
+					if(!Number.isInteger(x[i]))<br>
+					return false;<br>
+				}<br>
+				return true;<br>
+			}<br>
+		</code>
+		<br>
+		<code> isIntegerArray("x")
+			<output>false</output>
+			isIntegerArray(1)
+			<output>false</output>
+			isIntegerArray()
+			<output>false</output>
+			isIntegerArray([])
+			<output>false</output>
+			isIntegerArray([1,2])
+			<output>true</output>
+			isIntegerArray(["1",2])
+			<output>false</output>
+			isIntegerArray([NaN])
+			<output>false</code>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Luku taulukot</h3>
+			</div>
+			<div class="panel-body">
+				<b><p>Funktio <code>isNumberArray()</code> toimii täsmälleen samalla tavalla, kuin edellä mainittu <code>isIntegerArray()</code>, paitsi että alkioiden tarkistuksessa tarkastellaan vain onko alkio lukutyyppiä.</p></b>
+				<code align="left">function isNumberArray(x){<br>
+					if(!isArray(x) || x.length==0)<br>
+					return false;<br>
+					for (i = 0; i < x.length; i++) { <br>
+					if(!Number.isFinite(x[i]))<br>
+					return false;<br>
+				}<br>
+				return true;<br>
+			}<br>
+		</code>
+		<br>
+		<code>
+			isNumberArray()
+			<output>false</output>
+			isNumberArray([])
+			<output>false</output>
+			isNumberArray(["a",2])
+			<output>false</output>
+			isNumberArray([2,2])
+			<output>true</output>
+			isNumberArray([2.4,2])
+			<output>true</output>
+			isNumberArray([NaN,2])
+			<output>false</output>
+			isNumberArray([2])
+			<output>true</output>
+			isNumberArray([Infinity])
+			<output>false</output>
+		</code>
+	</div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Tyyppiturvallisuudesta yleisesti</h3>
-    </div>
-    <div class="panel-body">
-        <b><p>Kuten kurssimateriaaleissa on mainittu, JavaScriptissä muuttujilla ei ole tyyppiä samaan tapaan kuin esimerkiksi Javassa.
-            Ei siis ole olemassa funktiota, joka yksiselitteisesti kertoisi jonkin muuttujan tyypin/luokan kuten Javan <code>class.getName()</code> -funktio.<br>
-            On kuitenkin useita keinoja, joilla muuttujan tyyppiä voi yrittää tiedustella. Näistä mikään ei kuitenkaan ole "idioottivarma", eli kielen sisäinen toiminta on hyvä olla hallussa.</p></b>
-            <h3><code>constructor</code> -ominaisuuden käyttäminen</h3>
-            <p>Jokaisella objektilla on arvo <code>constructor</code> -muuttujalle, mutta riippuen siitä miten objekti alun perin luotiin, ja miten tätä tietoa aiotaan käyttää, ei siitä välttämättä ole mitään hyötyä. Yleisesti ottaen <code>constructor</code> -muuttujaa voi käyttää seuraavalla tavalla:</p>
-            <code>var lista = [1,2,3];<br>
-                myArray.constructor == Array
-                <output>true</output>
-            </code>
-            <b><p>Monissa tapauksissa tämä ei kuitenkaan toimi! :</b></p>
-            <code>
-                function Asia(){<br>
-            }<br>
-            Asia.prototype = {<br>
-            metodi1: function(){<br>
-        },<br>
-        metodi2: function(){<br>
-    }<br>
+	<div class="panel-heading">
+		<h3 class="panel-title">Tyyppiturvallisuudesta yleisesti</h3>
+	</div>
+	<div class="panel-body">
+		<b><p>Kuten kurssimateriaaleissa on mainittu, JavaScriptissä muuttujilla ei ole tyyppiä samaan tapaan kuin esimerkiksi Javassa.
+			Ei siis ole olemassa funktiota, joka yksiselitteisesti kertoisi jonkin muuttujan tyypin/luokan kuten Javan <code>class.getName()</code> -funktio.<br>
+			On kuitenkin useita keinoja, joilla muuttujan tyyppiä voi yrittää tiedustella. Näistä mikään ei kuitenkaan ole "idioottivarma", eli kielen sisäinen toiminta on hyvä olla hallussa.</p></b>
+			<h3><code>constructor</code> -ominaisuuden käyttäminen</h3>
+			<p>Jokaisella objektilla on arvo <code>constructor</code> -muuttujalle, mutta riippuen siitä miten objekti alun perin luotiin, ja miten tätä tietoa aiotaan käyttää, ei siitä välttämättä ole mitään hyötyä. Yleisesti ottaen <code>constructor</code> -muuttujaa voi käyttää seuraavalla tavalla:</p>
+			<code>var lista = [1,2,3];<br>
+				myArray.constructor == Array
+				<output>true</output>
+			</code>
+			<b><p>Monissa tapauksissa tämä ei kuitenkaan toimi! :</b></p>
+			<code>
+				function Asia(){<br>
+			}<br>
+			Asia.prototype = {<br>
+			metodi1: function(){<br>
+		},<br>
+		metodi2: function(){<br>
+	}<br>
 };<br>
 </code><br>
 <p>Objektit jotka on luotu komennolla <code>new Asia</code> omaavat <code>constructor</code> -muuttujan joka
-    osoittaa <code>Object</code>:iin, <b>ei</b> <code>Asia</code>:n</p>
-    <code>var asia = new Asia();<br>
-        asia.constructor<br>
-        <output>function Object() { [native code] }</output>
-    </code>
-    vertaa:
-    <code>
-        myArray.constructor<br>
-        <output>function Array() { [native code] }</output>
-    </code>
-    <p>Jos et siis hallinnoi/tunne käyttämääsi kirjastoa/lähdekoodia, niin et voi luottaa siihen, että muuttujien "tyyppi"
-        on sama kuin sen nimi. Toinen esimerkki, jossa construktori ei vastaa muuttujan "tyyppiä", on tilanne jossa käytetään multiple inheritance:a</p>
-        <code>
-            function a() { this.foo = 1;}<br>
-            function b() { this.bar = 2; }<br>
-            b.prototype = new a(); // b perii a:n<br>
-        </code><br>
-        <p>taaskaan asiat eivät toimi odotetulla tavalla:</p>
-        <code>
-            var f = new b(); // initialisoidaan uusi muuttuja b:n konstruktorilla<br><br>
-            f.constructor == b<br>
-            <output>false</output>
-            f.constructor == a<br>
-            <output>true</output>
-        </code>
-        <p>b:n todellinen konstuktori on siis a!</p>
-        <code>
-            f.constructor<br>
-            <output>function a() { this.foo = 1;}</output>
-        </code>
-        <p>Voit siis saada odottamattomia paluuarvoja, jos objektin prototyypiksi on asetettu jokin muu objekti.</p>
-        <h3><code>instanceof</code> -operaattorin käyttö</h3>
-        <p><code>instanceof</code> -operaattorilla voi myös tutkia objektin tyyppiä, mutta silläkin on omat rajoitteensa:</p>
-        <code>
-            var myArray = [1,2,3];<br>
-            myArray instanceof Array;<br>
-            <output>true</output>
-            myArray instanceof Object;<br>
-            <output>true</output>
-        </code>
-        <p><code>instanceof</code> ei kuitenkaan toimi primitiiveillä:</p>
-        <code>
-            3 instanceof Number<br>
-            <output>false</output>
-            'abc' instanceof String<br>
-            <output>false</output>
-            true instanceof Boolean<br>
-            <output>false</output>
-        </code>
-        <p><code>instanceof</code> -operaattori vaatii wrapperin primitiiveille toimiakseen:</p>
-        <code>
-            new Number(3) instanceof Number<br>
-            <output>true</output>
-        </code>
-        <p>Ironisesti <code>.constructor</code> sen sijaan toimii primitiivien kanssa ongelmitta:</p>
-        <code>
-            3..constructor === Number //3:n jälkeen on 2 pistettä, koska JS tulkitsee ensimmäisen pisteen desimaalipisteenä<br>
-            <output>true</output>
-            'abc'.constructor === String<br>
-            <output>true</output>
-            true.constructor === Boolean<br>
-            <output>true</output>
-        </code>
-        <h3><code>.constructor.name</code> -muuttujan käyttö</h3>
-        <p>Jos halutaan siistimpi muoto objektin "tyypistä", niin voidaan pyytää konstruktorin <code>.name</code> -muuttujan arvoa:</p>
-        <code>
-            function Point2D(x,y){<br>
-            this.x = x;<br>
-            this.y = y;<br>
-        }<br>
-        var piste = new Point2D(5,10);<br>
-        piste.contructor<br>
-        <output>
-            function Point2D(x,y){<br>
-            this.x = x;<br>
-            this.y = y;<br>
-        }</output>
-    </code>
-    <p> mutta:</p>
-    <code>
-        piste.constructor.name<br>
-        <output>"Point2D"</output>
-    </code>
-    <p><code>.name</code> ei kuitenkaan ilmeisesti toimi kaikissa selaimissa/selainten versioissa</p>
-    <h3><code>Object.prototype.toString</code> käyttö</h3>
-    <p><code>Object.prototype.toString</code>:iä voi käyttää JavaScriptin natiiveille muuttujatyypeille:</p>
-    <code>
-        Object.prototype.toString.call('abc')<br>
-        <output>"[object String]"</output>
-        Object.prototype.toString.call(/abc/)<br>
-        <output>"[object RegExp]"</output>
-        Object.prototype.toString.call([1,2,3])<br>
-        <output>"[object Array]"</output>
-    </code>
-    <p>Pientä apufunktiota käyttämällä, saadaan paluuarvo sievään muotoon:</p>
-    <code>
-        function type(obj){<br>
-        return Object.prototype.toString.call(obj).slice(8, -1);<br>
-    }<br><br>
-    type('abc')<br>
-    <output>"String"</output>
+	osoittaa <code>Object</code>:iin, <b>ei</b> <code>Asia</code>:n</p>
+	<code>var asia = new Asia();<br>
+		asia.constructor<br>
+		<output>function Object() { [native code] }</output>
+	</code>
+	vertaa:
+	<code>
+		myArray.constructor<br>
+		<output>function Array() { [native code] }</output>
+	</code>
+	<p>Jos et siis hallinnoi/tunne käyttämääsi kirjastoa/lähdekoodia, niin et voi luottaa siihen, että muuttujien "tyyppi"
+		on sama kuin sen nimi. Toinen esimerkki, jossa construktori ei vastaa muuttujan "tyyppiä", on tilanne jossa käytetään multiple inheritance:a</p>
+		<code>
+			function a() { this.foo = 1;}<br>
+			function b() { this.bar = 2; }<br>
+			b.prototype = new a(); // b perii a:n<br>
+		</code><br>
+		<p>taaskaan asiat eivät toimi odotetulla tavalla:</p>
+		<code>
+			var f = new b(); // initialisoidaan uusi muuttuja b:n konstruktorilla<br><br>
+			f.constructor == b<br>
+			<output>false</output>
+			f.constructor == a<br>
+			<output>true</output>
+		</code>
+		<p>b:n todellinen konstuktori on siis a!</p>
+		<code>
+			f.constructor<br>
+			<output>function a() { this.foo = 1;}</output>
+		</code>
+		<p>Voit siis saada odottamattomia paluuarvoja, jos objektin prototyypiksi on asetettu jokin muu objekti.</p>
+		<h3><code>instanceof</code> -operaattorin käyttö</h3>
+		<p><code>instanceof</code> -operaattorilla voi myös tutkia objektin tyyppiä, mutta silläkin on omat rajoitteensa:</p>
+		<code>
+			var myArray = [1,2,3];<br>
+			myArray instanceof Array;<br>
+			<output>true</output>
+			myArray instanceof Object;<br>
+			<output>true</output>
+		</code>
+		<p><code>instanceof</code> ei kuitenkaan toimi primitiiveillä:</p>
+		<code>
+			3 instanceof Number<br>
+			<output>false</output>
+			'abc' instanceof String<br>
+			<output>false</output>
+			true instanceof Boolean<br>
+			<output>false</output>
+		</code>
+		<p><code>instanceof</code> -operaattori vaatii wrapperin primitiiveille toimiakseen:</p>
+		<code>
+			new Number(3) instanceof Number<br>
+			<output>true</output>
+		</code>
+		<p>Ironisesti <code>.constructor</code> sen sijaan toimii primitiivien kanssa ongelmitta:</p>
+		<code>
+			3..constructor === Number //3:n jälkeen on 2 pistettä, koska JS tulkitsee ensimmäisen pisteen desimaalipisteenä<br>
+			<output>true</output>
+			'abc'.constructor === String<br>
+			<output>true</output>
+			true.constructor === Boolean<br>
+			<output>true</output>
+		</code>
+		<h3><code>.constructor.name</code> -muuttujan käyttö</h3>
+		<p>Jos halutaan siistimpi muoto objektin "tyypistä", niin voidaan pyytää konstruktorin <code>.name</code> -muuttujan arvoa:</p>
+		<code>
+			function Point2D(x,y){<br>
+			this.x = x;<br>
+			this.y = y;<br>
+		}<br>
+		var piste = new Point2D(5,10);<br>
+		piste.contructor<br>
+		<output>
+			function Point2D(x,y){<br>
+			this.x = x;<br>
+			this.y = y;<br>
+		}</output>
+	</code>
+	<p> mutta:</p>
+	<code>
+		piste.constructor.name<br>
+		<output>"Point2D"</output>
+	</code>
+	<p><code>.name</code> ei kuitenkaan ilmeisesti toimi kaikissa selaimissa/selainten versioissa</p>
+	<h3><code>Object.prototype.toString</code> käyttö</h3>
+	<p><code>Object.prototype.toString</code>:iä voi käyttää JavaScriptin natiiveille muuttujatyypeille:</p>
+	<code>
+		Object.prototype.toString.call('abc')<br>
+		<output>"[object String]"</output>
+		Object.prototype.toString.call(/abc/)<br>
+		<output>"[object RegExp]"</output>
+		Object.prototype.toString.call([1,2,3])<br>
+		<output>"[object Array]"</output>
+	</code>
+	<p>Pientä apufunktiota käyttämällä, saadaan paluuarvo sievään muotoon:</p>
+	<code>
+		function type(obj){<br>
+		return Object.prototype.toString.call(obj).slice(8, -1);<br>
+	}<br><br>
+	type('abc')<br>
+	<output>"String"</output>
 </code>
 <h3>Yhteenveto tyypin määrittelemisen problematiikasta</h3>
 <p>Tyypin määrittelyn ongelmallisuus tulee siitä, että objekteja voidaan määritellä niin monella eri tapaa:</p>
 <code>
-    // nimetyn funktion käyttäminen:<br>
-    function Foo() { this.a = 1; }<br>
-    var obj = new Foo();<br>
-    (obj instanceof Object);          // true<br>
-    (obj instanceof Foo);             // true<br>
-    (obj.constructor == Foo);         // true<br>
-    (obj.constructor.name == "Foo");  // true<br><br>
+	// nimetyn funktion käyttäminen:<br>
+	function Foo() { this.a = 1; }<br>
+	var obj = new Foo();<br>
+	(obj instanceof Object);          // true<br>
+	(obj instanceof Foo);             // true<br>
+	(obj.constructor == Foo);         // true<br>
+	(obj.constructor.name == "Foo");  // true<br><br>
 
-    // prototyyppisen perinnän lisääminen:<br>
-    function Bar() { this.b = 2; }<br>
-    Foo.prototype = new Bar();<br>
-    obj = new Foo();<br>
-    (obj instanceof Object);          // true<br>
-    (obj instanceof Foo);             // true<br>
-    (obj.constructor == Foo);         // false<br>
-    (obj.constructor.name == "Foo");  // false<br><br>
-
-
-    // anonyymin funktion käyttö:<br>
-    obj = new (function() { this.a = 1; })();<br>
-    (obj instanceof Object);              // true<br>
-    (obj.constructor == obj.constructor); // true<br>
-    (obj.constructor.name == "");         // true<br><br>
+	// prototyyppisen perinnän lisääminen:<br>
+	function Bar() { this.b = 2; }<br>
+	Foo.prototype = new Bar();<br>
+	obj = new Foo();<br>
+	(obj instanceof Object);          // true<br>
+	(obj instanceof Foo);             // true<br>
+	(obj.constructor == Foo);         // false<br>
+	(obj.constructor.name == "Foo");  // false<br><br>
 
 
-    // muuttujaan asetetun anonyymin funktion käyttö:<br>
-    var Foo = function() { this.a = 1; };<br>
-    obj = new Foo();<br>
-    (obj instanceof Object);      // true<br>
-    (obj instanceof Foo);         // true<br>
-    (obj.constructor == Foo);     // true<br>
-    (obj.constructor.name == ""); // true<br><br>
+	// anonyymin funktion käyttö:<br>
+	obj = new (function() { this.a = 1; })();<br>
+	(obj instanceof Object);              // true<br>
+	(obj.constructor == obj.constructor); // true<br>
+	(obj.constructor.name == "");         // true<br><br>
 
 
-    // objekti-literaali syntaksin käyttö:<br>
-    obj = { foo : 1 };<br>
-    (obj instanceof Object);            // true<br>
-    (obj.constructor == Object);        // true<br>
-    (obj.constructor.name == "Object"); // true<br><br>
+	// muuttujaan asetetun anonyymin funktion käyttö:<br>
+	var Foo = function() { this.a = 1; };<br>
+	obj = new Foo();<br>
+	(obj instanceof Object);      // true<br>
+	(obj instanceof Foo);         // true<br>
+	(obj.constructor == Foo);     // true<br>
+	(obj.constructor.name == ""); // true<br><br>
+
+
+	// objekti-literaali syntaksin käyttö:<br>
+	obj = { foo : 1 };<br>
+	(obj instanceof Object);            // true<br>
+	(obj.constructor == Object);        // true<br>
+	(obj.constructor.name == "Object"); // true<br><br>
 </code>
+</div>
+</div>
+<h2 id="viikko2">Viikko 2</h2>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">JavaScript poikkeukset</h3>
+	</div>
+	<div class="panel-body">
+		<p>Poikkeus on tapahtuma joka tapahtuu kun ohjelman normaalissa suorituksessa ilmenee häiriö.
+			Javascriptin poikkeusten käsittely noudattaa Javalle tyypillistä try - catch - finally kaavaa, jossa poikkeuksia voidaan lisäksi heittää throw -komennolla.</p>
+
+			<p>Javascript on poikkeusten käsittelyssä perin vapaa, sillä poikkeuksen arvona voidaan heittää melkeinpä mitä tahansa. Poikkeuksena voidaan heittää vaikkapa merkkijono, luku tai funktio.</p>
+
+			<p>throw "Error3”; 	// tuottaa poikkeuksen merkkijonolla ”Error3”
+				throw 666;       	// tuottaa poikkeuksen arvolla 666
+				throw true;     	// tuottaa poikkeuksen arvolla true
+			</p>
+
+
+			<p><b>Poikkeuksena merkkijono:</b>
+				try {
+				throw ”Poikkeus tapahtunut”;
+			} catch(exception) {
+			alert(exception); 	//Käyttäjälle alert -ikkuna varoitus tekstillä.
+		}</p>
+
+		<p><b>Poikkeuksena luku:</b>
+			try {
+			throw 666;
+		} catch(exception) {
+		alert(exception); 	//Käyttäjälle alert -ikkuna tekstillä 666.
+	}</p>
+
+	<p><b>Poikkeuksena funktio:</b>
+		try {
+		throw function() { alert(”Poikkeus tapahtunut!”) };
+	} catch(exception) {
+	exception(); 	//Käyttäjälle alert -ikkuna varoitus tekstillä.
+}</p>
+
+<p><b>Poikkeus voi heittää uuden poikkeuksen:</b>
+	try {
+	throw n; // heittää poikkeuksen numeerisella arvolla
+} catch (e) {
+if (e <= 50) {
+// käsittelee virheet 1-50
+} else {
+// virhettä ei pystytä käsittelemään, joten heitetään se uudestaan
+throw e;
+}
+}</p>
+
+<p>Javascriptillä funktioita voidaan suorittaa käytännössä lähes kokonaan poikkeuksiin perustuen. Esimerkkinä funktio, joka käyttää poikkeuksia palautteen tulostamiseen:</p>
+
+<p>function myFunction(x) {
+	    try { 
+	        if(x == "") throw "empty";
+	        if(isNaN(x)) throw "not a number";
+	        x = Number(x);
+	        if(x < 5) throw "too low";
+	        if(x > 10) throw "too high";
+    }
+    catch(err) {
+        alert(”Input is " + err);
+    }
+}</p>
+
+<p>Javascript sisältää myös oman Error konstruktorifunktion, jonka kentät name eli poikkeuksen nimi ”Error” ja messange, joka on siis poikkeuksen kuvaus. Käyttämällä poikkeusten käsittelyyn Error -konstuktoria, käyttäytyvät virheet samalla tavalla kuin Javascriptin omat poikkeukset.</p>
+
+<p>try {
+	throw new Error(”Poikkeus tapahtunut!”);
+} catch(exception) {
+alert(exception.message); 		//Käyttäjälle alert -ikkuna varoitus tekstillä.
+}</p>
+
+<p>Paras tapa virheiden käisttelyyn on käyttää Javascriptin valmista konstruktoria niin paljon kuin vain mahdollista. Mikäli virheen käsittely vaatii muun rakenteen, tehdään sille spesifinen virheen käsittelijä.</p>
+
 </div>
 </div>
 </div>
