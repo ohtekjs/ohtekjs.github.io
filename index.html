@@ -341,6 +341,100 @@
 </div>
 <h2 id="viikko2">Viikko 2</h2>
 <div class="panel panel-default">
+<div class="panel-heading">
+    <h3 class="panel-title">Tyypittömyyden käyttö funktioissa/algoritmeissa</h3>
+</div>
+<div class="panel-body">
+<p>Muuttujien tyypittömyys helpottaa esimerkiksi funktioiden määrittelyvaiheessa. Toisin kuin esimerkiksi Javassa, 
+Javascriptissä ei tarvitse funktion määrittelyvaiheessa kertoa minkä tyyppisiä (esim. int, String jne.) sen parametrit tulevat olemaan/paljonko niitä annetaan. Tämä vähentää ns. boiler plate -koodin kirjoittamisen tarvetta. Wikipedia määrittelee boiler plate -koodin seuraavalla tavalla:</p>
+<blockquote>boilerplate code or boilerplate is the sections of code that have to be included in many places with little or no alteration<footer>Wikipedia</footer></blockquote>
+<p>Ei siis ole tarvetta luoda useampaa funktiota (joissa on paljolti samaa koodia) vain sen takia, että kaikki
+mielekkäät parametrityyppien kombinaatiot pitäisi ottaa huomioon. Tarkastellaan seuraavaa yksinkertaista funktiota, ja sen palauttamia arvoja:</p>
+<pre class="prettyprint">
+var concatORsum = function(a,b){
+  return a+b;
+};
+</pre>
+<p>Parametrien tyyppiä ei tarvitse erikseen määritellä, mutta functio kyllä toimii eri tavalla riippuen siitä mikä on annetun parametrin arvon tyyppi. Pitää siis tietää miten natiivit funktiot käsittelevät eri arvoja ja niiden välisiä operaatioita:</p>
+<pre class="prettyprint">
+concatORsum(5,5);	//"10"
+concatORsum("5",5)	//"55"
+concatORsum("a",5)	//"a5"
+
+var a = {x:5};
+var b = {x:5};
+concatORsum(a,b)	//"[object Object][object Object]"
+
+//mutta
+concatORsum(a.x,b.x)	//"10"
+</pre>
+<p>Otetaan seuraavaksi tarkasteltavaksi funktio, joka muodostaa annetuista parametreista (=argumenteista) Arrayn,
+tekee siitä ns. flatlistin (eli yhdistää sisäkkäiset Arrayt), ja palauttaa sen sitten sortattuna:
+</p>
+<pre class="prettyprint">
+var concatANDsort = function(){
+  var args = Array.prototype.slice.call(arguments);
+  var flatArray = [].concat.apply([], args);
+  return flatArray.sort();
+};
+</pre>
+<p>Funktio palauttaa seuraavanlaisia listoja seuraavilla syötteillä:</p>
+<pre class="prettyprint">
+concatANDsort(1,3,2)	//"[1,2,3]"
+concatANDsort(5,[3,4],1)	//"[1,3,4,5]"
+
+//mutta
+concatANDsort(1,3,2,11,5)	//"[1, 11, 2, 3, 5]"
+</pre>
+<p>sort -funktio siis järjestää alkiot aakkosellisesti! Tehdään apufunktio, joka voidaan antaa parametrina [].sort():lle</p>
+<pre class="prettyprint">
+var sortNumerically = function(a,b) {
+    return a - b;
+};
+
+var concatANDsort = function(){
+  var args = Array.prototype.slice.call(arguments);
+  var flatArray = [].concat.apply([], args);
+  return flatArray.sort(sortNumerically);
+};
+
+//nyt sorttaus toimii kuten halutaan
+concatANDsort(1,3,[2,11],5)	//"[1, 2, 3, 5, 11]""
+</pre>
+<p>Yritetään sitten antaa parametrille jotain muutakin arvoja kuin lukuliteraaleja tai Arrayta, jotka koostuvat lukuliteraaleista: </p>
+<pre class="prettyprint">
+concatANDsort(1,"3",2)	//"[1,2,"3"]"	sorttaus siis onnistuu, mutta funktio ei muuta arvon "3" tyyppiä
+
+//mutta
+concatANDsort(2,1,"b","a",[5],4,3) //"[1, 2, "b", "a", 3, 4, 5]"
+</pre>
+<p>Funktio ei siis osaa sortata enää stringejä. Muutetaan sorttausfunktio seuraavanlaiseksi:</p>
+<pre class="prettyprint">
+var compare = function(a, b) {
+  if (a < b) {
+    return -1;
+  }
+  if (a > b) {
+    return 1;
+  }
+  return 0;
+};
+
+//nyt sekä numeerinen että alphabeettinen sorttaus toimivat osittain. Lukujen ja stringien
+//keskinäinen sorttaus ei kuitenkaan toimi.
+concatANDsort(2,1,"b","a",[5],4,3)	//[1, 2, "a", "b", 3, 4, 5]
+
+concatANDsort(concatORsum(1,2),2,1)	//"[1,2,3]"
+</pre>
+<p>
+Pitää siis muistaa, että vaikka muuttujilla ei ole tyyppiä, niin arvoilla kyllä on tyypit, mikä vaikuttaa funktion toimintaan. Muuttujien tyypittömyys helpottaa joissain osin funktioiden/algoritmien kirjoittamista, mutta voi tuottaa myös päänvaivaa varsinkin jos testausta ei ole toteutettu huolella.<br> Funktiot ovat usein lyhyempiä, ytimekkäämpiä, niitä on helpompi käyttää epäkonventionaalisesti (jos tietää mitä tekee), interaktiivisempia ja paremmin polymorfismia hyödyntäviä.<br>
+Toisaalta jos tyyppien määrittely on pakollista, niin se johtaa usein parempaan koodin designiin, mahdollistaa käännösaikaisen koodin tarkastuksen, koodin autocompletionin kirjoitusvaiheessa, ja erinäköisten rajapintojen
+käytön polymorfismin tavoittelussa.
+</p>
+</div>
+</div>
+
+<div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">Paradigmat</h3>
 	</div>
