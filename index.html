@@ -341,6 +341,100 @@
 </div>
 <h2 id="viikko2">Viikko 2</h2>
 <div class="panel panel-default">
+<div class="panel-heading">
+    <h3 class="panel-title">Tyypittömyyden käyttö funktioissa/algoritmeissa</h3>
+</div>
+<div class="panel-body">
+<p>Muuttujien tyypittömyys helpottaa esimerkiksi funktioiden määrittelyvaiheessa. Toisin kuin esimerkiksi Javassa, 
+Javascriptissä ei tarvitse funktion määrittelyvaiheessa kertoa minkä tyyppisiä (esim. int, String jne.) sen parametrit tulevat olemaan/paljonko niitä annetaan. Tämä vähentää ns. boiler plate -koodin kirjoittamisen tarvetta. Wikipedia määrittelee boiler plate -koodin seuraavalla tavalla:</p>
+<blockquote>boilerplate code or boilerplate is the sections of code that have to be included in many places with little or no alteration<footer>Wikipedia</footer></blockquote>
+<p>Ei siis ole tarvetta luoda useampaa funktiota (joissa on paljolti samaa koodia) vain sen takia, että kaikki
+mielekkäät parametrityyppien kombinaatiot pitäisi ottaa huomioon. Tarkastellaan seuraavaa yksinkertaista funktiota, ja sen palauttamia arvoja:</p>
+<pre class="prettyprint">
+var concatORsum = function(a,b){
+  return a+b;
+};
+</pre>
+<p>Parametrien tyyppiä ei tarvitse erikseen määritellä, mutta functio kyllä toimii eri tavalla riippuen siitä mikä on annetun parametrin arvon tyyppi. Pitää siis tietää miten natiivit funktiot käsittelevät eri arvoja ja niiden välisiä operaatioita:</p>
+<pre class="prettyprint">
+concatORsum(5,5);	//"10"
+concatORsum("5",5)	//"55"
+concatORsum("a",5)	//"a5"
+
+var a = {x:5};
+var b = {x:5};
+concatORsum(a,b)	//"[object Object][object Object]"
+
+//mutta
+concatORsum(a.x,b.x)	//"10"
+</pre>
+<p>Otetaan seuraavaksi tarkasteltavaksi funktio, joka muodostaa annetuista parametreista (=argumenteista) Arrayn,
+tekee siitä ns. flatlistin (eli yhdistää sisäkkäiset Arrayt), ja palauttaa sen sitten sortattuna:
+</p>
+<pre class="prettyprint">
+var concatANDsort = function(){
+  var args = Array.prototype.slice.call(arguments);
+  var flatArray = [].concat.apply([], args);
+  return flatArray.sort();
+};
+</pre>
+<p>Funktio palauttaa seuraavanlaisia listoja seuraavilla syötteillä:</p>
+<pre class="prettyprint">
+concatANDsort(1,3,2)	//"[1,2,3]"
+concatANDsort(5,[3,4],1)	//"[1,3,4,5]"
+
+//mutta
+concatANDsort(1,3,2,11,5)	//"[1, 11, 2, 3, 5]"
+</pre>
+<p>sort -funktio siis järjestää alkiot aakkosellisesti! Tehdään apufunktio, joka voidaan antaa parametrina [].sort():lle</p>
+<pre class="prettyprint">
+var sortNumerically = function(a,b) {
+    return a - b;
+};
+
+var concatANDsort = function(){
+  var args = Array.prototype.slice.call(arguments);
+  var flatArray = [].concat.apply([], args);
+  return flatArray.sort(sortNumerically);
+};
+
+//nyt sorttaus toimii kuten halutaan
+concatANDsort(1,3,[2,11],5)	//"[1, 2, 3, 5, 11]""
+</pre>
+<p>Yritetään sitten antaa parametrille jotain muutakin arvoja kuin lukuliteraaleja tai Arrayta, jotka koostuvat lukuliteraaleista: </p>
+<pre class="prettyprint">
+concatANDsort(1,"3",2)	//"[1,2,"3"]"	sorttaus siis onnistuu, mutta funktio ei muuta arvon "3" tyyppiä
+
+//mutta
+concatANDsort(2,1,"b","a",[5],4,3) //"[1, 2, "b", "a", 3, 4, 5]"
+</pre>
+<p>Funktio ei siis osaa sortata enää stringejä. Muutetaan sorttausfunktio seuraavanlaiseksi:</p>
+<pre class="prettyprint">
+var compare = function(a, b) {
+  if (a < b) {
+    return -1;
+  }
+  if (a > b) {
+    return 1;
+  }
+  return 0;
+};
+
+//nyt sekä numeerinen että alphabeettinen sorttaus toimivat osittain. Lukujen ja stringien
+//keskinäinen sorttaus ei kuitenkaan toimi.
+concatANDsort(2,1,"b","a",[5],4,3)	//[1, 2, "a", "b", 3, 4, 5]
+
+concatANDsort(concatORsum(1,2),2,1)	//"[1,2,3]"
+</pre>
+<p>
+Pitää siis muistaa, että vaikka muuttujilla ei ole tyyppiä, niin arvoilla kyllä on tyypit, mikä vaikuttaa funktion toimintaan. Muuttujien tyypittömyys helpottaa joissain osin funktioiden/algoritmien kirjoittamista, mutta voi tuottaa myös päänvaivaa varsinkin jos testausta ei ole toteutettu huolella.<br> Funktiot ovat usein lyhyempiä, ytimekkäämpiä, niitä on helpompi käyttää epäkonventionaalisesti (jos tietää mitä tekee), interaktiivisempia ja paremmin polymorfismia hyödyntäviä.<br>
+Toisaalta jos tyyppien määrittely on pakollista, niin se johtaa usein parempaan koodin designiin, mahdollistaa käännösaikaisen koodin tarkastuksen, koodin autocompletionin kirjoitusvaiheessa, ja erinäköisten rajapintojen
+käytön polymorfismin tavoittelussa.
+</p>
+</div>
+</div>
+
+<div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">Paradigmat</h3>
 	</div>
@@ -369,6 +463,171 @@
 <p>JavaScriptin vahvuus on sen kaksiparadigmallisuuden tuoma funktionaalisuus. Täten funktionaalisten ominaisuuksien hyödyntämättä jättäminen olisi haaskeliasta. Funktiosta riippuen, funktionaalisesti ohjelmoituna ohjelmasta voidaan saada merkittävästi lyhyempi ja elegantimpi, kuin imperatiivisesti. Toisaalta monimutkaisen funktionaalisen ohjelman lukeminen ja hahmottaminen voi olla vaikeampaa kuin imperatiivisen, varsinkin kun imperatiivinen ohjelmointi on monelle tutumpaa ja laajemmin käytössä. Kummassakaan paradigmassa ei suoranaisesti ole yleisellä tasolla mitään toista parempaa, vaan valinnan tulisi perustua ohjelman käyttötarpeeseen ja siihen mitä ohjelmoija haluaa saavuttaa. Koska JavaScript on nimenomaan kaksiparadigmallinen, parhaiten tätä tulee hyödynnettyä käyttämällä sekä imperatiivista, että funktionaalista ohjelmointia.</p>
 	</div>
 </div>
+<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Sulkeumat</h3>
+                </div>
+                
+                <div class="panel-body">
+                    <b><p>
+                        Javascriptissä muuttujat ovat joko paikallisia tai globaaleja, mutta 
+                        sulkeumien avulla niistä voi tehdä myös privaatteja. Sulkeuma kapseloi
+                        muuttujansa. Sulkeuma käytännössä luodaan laittamalla funtio toisen funktion sisään.
+                        Sulkeumalla voi hyvin hallita sitä miten ohjelmoija ja käyttäjä pystyy vaikuttamaan
+                        sen kapseloimaan tietoon.
+                    </p></b>
+                    
+                    <b><p>
+                        Sulkeumia on hyvä käyttää tiedon kapselointiin ja globaalien muuttujien minimointiin.
+                        Globaalit muuttujat ovat hyvin vaarallisia, koska ohjelmoija voi vahingossa muuttaa
+                        globaalin muuttujan arvoa rikkoen samalla ohjelman. Tämä on yleistä varsinkin 
+                        suuremmissa ohjelmistoprojekteissa, joissa on monia ohjelmoijia. Jos halutaan säilyttää
+                        ohjelman koko suorituksen ajan joku tietty muuttuja, vaikka kokonaisluku muuttujassa 
+                        <code>var x</code>, voitaisiin kapseloida se funktion sisälle niin, että sitä pääsee
+                        muokkaamaan vain tietyillä määritellyillä funktioilla:
+                    </p></b>
+                    
+<pre class="prettyprint">function Tarkea() {
+    var x = 0;
+    this.kasvata = function() {
+        x++;
+    }
+    this.vahenna = function() {
+        x--;
+    }
+    this.tulosta = function() {
+        return x;
+    }
+}</pre>
+                    
+                    <b><p>
+                        Muuttujaan x ei pääse suoraan käsiksi ja sitä voi muokata vain 
+                        annetuilla funktiolla <code>kasvata()</code> ja <code>vahenna()</code>
+                        Ilkeä tai tyhjä ohjelmoija ei pääse tässä tapauksessa suoraan muuttamaan
+                        x:n arvoa vaikka eri tyyppiseksi.
+                    </p></b>
+                    
+                    <b><p>
+                        Yllä olevaa funktiota voi käyttää esimerkiksi seuraavasti:
+                    </p></b>
+                    
+<pre class="prettyprint">var funktio = new Tarkea();     // Luo uuden olion ja asettaa muuttujan funktio viittaamaan siihen
+console.log(funktio.tulosta()); // 0
+funktio.kasvata();              // Kasvattaa funktion sisäisen muuttujan x arvoa
+console.log(funktio.tulosta()); // 1
+
+var toinenFunktio = new Tarkea(); // Luodaan toinen olio
+toinenFunktio.vahenna();
+
+console.log(funktio.tulosta());       // 1
+console.log(toinenFunktio.tulosta()); // -1.
+
+console.log(funktio.x);         // undefined. Ei siis päästä suoraan käsiksi x:ään</pre>
+                
+                    <b><p>
+                        Yllä olevassa esimerkissä huomataan, että tieto pysyy samana koko ohjelman
+                        suoritusajan, ja samantyyppisiä olioita voidaan luoda monia ilman, että ne
+                        vaikuttavat toisiinsa suoraan. Jos halutaan pitää globaalia tietoa mukana 
+                        sovelluksessa koko sen suoritusajan, sen kapseloiminen yllä osoitetulla tavalla
+                        sulkeumaan on parempi vaihtoehto globaalien muuttujien sijaan. 
+                    </p></b>
+                    
+                    <b><p>
+                        Yhdistämällä sulkeuman anonyymeihin funtiohin, eli funktioihin joilla ei ole nimeä ja 
+                        jotka määritellään vain muuttujiin, saadaan moduulit. Seuraavassa yksinkertainen esimerkki
+                        moduulista:
+                    </p></b>
+                    
+<pre class="prettyprint">var testaus = {};
+
+testaus.testi = (function() {
+    var lista = new Array();
+
+	function lisaaListaan(alkio) {
+        // tähän tarkistukset yms. jos halutaan
+        lista.push(alkio);
+    }
+
+    function annaLista() {
+        return lista;
+    }
+
+    return {
+        lisaa: lisaaListaan,
+        tulosta: annaLista
+    };
+})();
+
+console.log(testaus.testi.tulosta()); // [] (tyhjä lista)
+testaus.testi.lisaa("Hei Hei!");      
+console.log(testaus.testi.tulosta()); // ["Hei Hei!"]</pre>
+                    
+                    <b><p>
+                        Yllä olevan moduulin sisältämä data on ainutkertaista, eli siitä ei voi luoda uusia
+                        olioita. Voi olla vain yksi tälläinen moduuli. Tämä voi olla suotavaa joissain tilanteissa
+                        esim. jos halutaan säilyttää globaalia dataa hyvin hallitussa ympäristössä. Moduulit voi myös
+                        yhdistää olioihin niin että niistä voi luoda instansseja:
+                    </p></b>
+                    
+<pre class="prettyprint">var testaus = {};
+
+testaus.Yritys = (function() {
+    // Konstruktori funktio
+    function Yhdistys() {
+        var dataa = 0;
+        
+        this.lisaa = function() {
+            dataa += 3;
+        }
+        
+        this.nollaa = function() {
+            dataa = 0;
+        }
+        
+        this.tulosta = function() {
+            return dataa;
+        }
+    }
+    
+    return Yhdistys;
+})();
+
+var yhdistys = new testaus.Yritys();
+var toinenYhdistys = new testaus.Yritys();
+
+yhdistys.lisaa();
+yhdistys.lisaa();
+toinenYhdistys.lisaa();
+
+console.log(yhdistys.tulosta());       // 6
+console.log(toinenYhdistys.tulosta()); // 3</pre>
+                    
+                    <b><p>
+                        Tapahtumien hallintaan sulkeumat ovat myös oivallisia.  Esimerkiksi jos sivulla on useita samantyyppisiä
+                        tapahtumia, voidaan luoda funktio, joka ottaa parametrin ja tämän parametrin pohjalta palauttaa toisen funktion.
+                        Alempi esimerkki olettaa, että html-sivulla on id:llä 'arvoruutu' merkitty elementti. Funktion voisi esimerkiksi laittaa
+                        kolmelle eri napille suoritettavaksi kun niitä painetaan.
+                    </p></b>
+                    
+<pre class="prettyprint">function asetaArvo(arvo) {
+    return function() {
+        document.getElementById('arvoruutu').value = arvo;
+    };
+};
+
+var arvo12 = asetaArvo(12);
+var arvo14 = asetaArvo(14);
+var arvo16 = asetaArvo(16);</pre>
+                    
+                    <b><p>
+                        Pitää ottaa huomioon myös se, ettei käytä sulkeumia turhaan, sillä se heikentää suorituskykyä.
+                        Kun luodaan uusi olio ja käytössä on sulkeuma, täytyy jokaisen olion luonnin yhteydessä käydä
+                        läpi kaikki metodimäärittelyt.
+                        Jos sulkeuman etuja ei tarvita, kannattaa käyttää vain prototyyppi määrittelyä.
+                    </p></b>
+                    
+                </div>
+            </div>
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">JavaScript poikkeukset</h3>
