@@ -733,15 +733,14 @@ var arvo16 = asetaArvo(16);</pre>
 	<div class="panel-body">
 		<p>Javascript sallii ominaisuuksien sitomisen suoraan konstruktorifunktion prototyyppiolio. Tämä on sikäli hyödyllinen (mutta samalla vaarallinen omaisuus), että kaikilla samalla konstruktorilla luodulta olioilta löytyvät yhteiset ominaisuudet niiden yhteisestä prototyyppiolioista.</p>
 		<b>Hyödyt:</b>
-		<p>-Halutaan jakaa jokin arvo tai funktio olioiden kesken ilman, että jokaiseen olioon on tarve luoda omaa kopiota halutusta ominaisuudesta.</p>
+		<p>Halutaan jakaa jokin arvo tai funktio olioiden kesken ilman, että jokaiseen olioon on tarve luoda omaa kopiota halutusta ominaisuudesta.</p>
 <pre class="prettyprint">
 	function Piste(x,y) {
   		this.x = x;
   		this.y = y;
 	}
-	
 	Piste.prototype.tulo =  function() {return this.x*this.y}
-
+	
 	var b = new Piste(3.14, 2.8)
 	console.log(b.tulo()) //8.792
 </pre>
