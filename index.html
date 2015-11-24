@@ -778,9 +778,12 @@ var arvo16 = asetaArvo(16);</pre>
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">Getterit ja setterit</h3>
+		<h3 class="panel-title">Getterit, setterit ja aksessorit</h3>
 	</div>
 	<div class="panel-body">
+
+	<h4>Getterit ja setterit</h4>
+
 		<p>Getterit ja setterit mahdollistavat olioiden eri ominaisuuksien hakemisen ja muokkaamisen. Gettereillä voi myös muokata palautettavaa arvoa ennen sen palautusta, ja settereillä muokata useita tietokenttiä. Getteri on parametriton funktio, joka palauttaa halutun arvon. Setteri puolestaan on parametrillinen funktio, joka muuttaa halutun olion tietokentän parametrin avulla. Alla olevassa esimerkissä on luotu olio o, jolla on muuttuja a, sekä getteri b, joka palauttaa arvon a+1, ja setteri c(x), joka asettaa a:n arvoksi x/2</p>
 		<pre class="prettyprint">var o = {
   a: 7,
@@ -843,6 +846,68 @@ console.log(o.a); // 25</pre>
     // => "test2"
 </pre>
 
+<h4>Aksessorit</h4>
+
+<p>
+	Muuttujan ominaisuuksiin (=property) pääsee käsiksi JS:ssä kahdella tapaa:<br>
+	<b>1)</b> Pistenotaatiolla<br>
+	<b>2)</b> Sulkunotaatiolla<br>
+</p>
+<pre class"prettyprint">
+object.property 	//pistenotaatio
+object["property"] 	//sulkunotaatio
+</pre>
+<p>
+	<b>1) Pistenotaatiolla get ja set näyttävät seuraavanlaisilta:</b>
+</p>
+<pre class="prettyprint">
+get = object.property;	//object on näissä esimerkeissä oliomuuttujan nimi
+object.property = set;
+</pre>
+<p>
+	Pistenotaatiota käytettäessä, <i>property</i> täytyy olla validi JavaScriptin tunniste (=identifier),
+	eli sen täytyy koostua alfanumeerisista merkeistä (mukaanlukien "_" ja "$"), eikä se voi alkaa numerolla.
+</p>
+<pre class="prettyprint">
+object.$1	//$1 on validi tunniste
+object.1	//1 on epävalidi tunniste, sillä se alkaa numerolla
+</pre>
+<p>
+	Funktion kutsu pistenotaatiolla:
+</p>
+<pre class="prettyprint">
+//funktio createElement noudetaan document -oliosta, ja sitä kutsutaan parametrilla 'pre'
+document.createElement('pre');	
+</pre>
+<p>
+	<b>2) Sulkunotaatiolla get ja set näyttävät seuraavanlaisilta</b>
+</p>
+<pre class="">
+get = object[property_name];
+object[property_name] = set;
+document['createElement']('pre');	//funktio-ominaisuuden haku ja suoritus sulkunotaatiolla
+</pre>
+<p>
+	<i>property_name</i> on stringi. Sulkunotaatiota käytettäessä muuttujan ominaisuuden nimi/avain/tunniste
+	ei tarvitse olla validi JavaScriptin tunniste; se voi siis olla esim <i>1foo</i>, <i>!bar!</i>, tai jopa " "(välilyönti).
+	Ominaisuuden nimi/avain/tunniste täytyy kuitenkin olla stringi. Jos tunnisteena yritetään käyttää jotain muuta kuin <i>String</i>
+	 -tyyppistä muuttujaa, niin se automaattisesti typecastataan stringiksi <i>toString</i> -metodilla:
+</p>
+<pre class="prettyprint">
+var object = {};
+object['1'] = 'arvo';
+console.log(object[1]);	//1 typecastataan stringiksi
+//=> "arvo"
+</pre>
+<pre class="prettyprint">
+var foo = {ominaisuus1: 1}, bar = {ominaisuus2: 2}, object = {};
+object[foo] = 'arvo';
+console.log(object[bar]);
+//=> "arvo"
+</pre>
+<p>Yllä oleva esimerkki palauttaa "arvo", koska sekä <i>foo</i> että <i>bar</i> muuttuvat samaksi
+stringiksi <i>toString</i> -metodilla. Tämä stringi on "[object Object]"
+</p>
 	</div>
 </div>
 
