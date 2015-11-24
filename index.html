@@ -726,6 +726,56 @@ var arvo16 = asetaArvo(16);</pre>
 </div>
 </div>
 <h2 id="viikko3">Viikko 3</h2>
+
+<div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Olioliteraalit</h3>
+                </div>
+                
+                <div class="panel-body">
+                    <p>
+                        Yksi yksinkertaisimmista tavoista luoda olio on olioliteraali. Olioliteraalissa
+                        luodaan jokainen avain-arvo pari ns. käsin yksikerrallaan. Seuraavassa esimerkki
+                        olioliteraalia käyttäen luotavasta oliosta.
+                    </p>
+                    
+<pre class="prettyprint">var literaali = 
+	{luku: 3,
+	 avain: "arvo"
+	}</pre>
+		   <p>
+		       Olion sisään voi myös asettaa muita oliota:
+		   </p>
+		   
+<pre class="prettyprint">var literaali = 
+	{luku: 3,
+	 avain: "arvo",
+	 toinenOlio: {toinenLuku: 3, toinenAvain: "jargon"},
+	 abstrakti: function() {return luku + 5;}
+	}</pre>
+			<p>
+			    Yllä olevan literaalin sisällä olevaan toiseen olioliteraaliin
+			    pääsee käsiksi <code>var sisaArvo = literaali.toinenOlio.toinenAvain</code>.
+			    Olioita voi laittaa sisäkkäin vaikka kuinka paljon näin. Huomataan myös,
+			    että olioliteraaliin voi laittaa myös árvoksi funktion.
+		       </p>
+		       
+		       <p>
+		            Olioliteraalien avulla tehdyt oliot ovat kaikki käsin tehty, koska niitä
+		            ei luoda konstruktorifunktion avulla, joten useiden olioiden luonti
+		            tällä tavoin on vaivalloista. Hyvä puoli olioliteraaleissa on, että koska
+		            niiden ei tarvitse kutsua konstruktori funktiota ovat ne kevyempiä
+		            suorittaa ja niiden käyttö siinä mielessä helpompaa, että konstruktorifunktiolla
+		            luodussa oliossa pitää muistaa sille annettujen parametrien järjestys. 
+		            Olioliteraalit sopivat esimerkiksi tietueiden luontiin, jotka ovat uniikkeja
+		            ja joita ei tarvitse luoda useampia. Esimerkiksi globaalia dataa voisi pitää
+		            olioliteraalilla tehdyssä oliossa sen hallinnoinnin helpottamiseksi. Olioita
+		            käsittelevät metodit näkevät olion samanlaisena kuin muillakin tavoilla tehdyt oliot.
+		       </p>
+                    
+                </div>
+            </div>
+
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">Olioiden prototyyppiominaisuudet</h3>
