@@ -781,7 +781,68 @@ var arvo16 = asetaArvo(16);</pre>
 		<h3 class="panel-title">Getterit ja setterit</h3>
 	</div>
 	<div class="panel-body">
-		<p>blaa</p>
+		<p>Getterit ja setterit mahdollistavat olioiden eri ominaisuuksien hakemisen ja muokkaamisen. Gettereillä voi myös muokata palautettavaa arvoa ennen sen palautusta, ja settereillä muokata useita tietokenttiä. Getteri on parametriton funktio, joka palauttaa halutun arvon. Setteri puolestaan on parametrillinen funktio, joka muuttaa halutun olion tietokentän parametrin avulla. Alla olevassa esimerkissä on luotu olio o, jolla on muuttuja a, sekä getteri b, joka palauttaa arvon a+1, ja setteri c(x), joka asettaa a:n arvoksi x/2</p>
+		<pre class="prettyprint">var o = {
+  a: 7,
+  get b() { 
+    return this.a + 1;
+  },
+  set c(x) {
+    this.a = x / 2
+  }
+};
+
+console.log(o.a); // 7
+console.log(o.b); // 8
+o.c = 50;
+console.log(o.a); // 25</pre>
+
+		<p>Gettereitä ja settereitä voi kuitenkin määritellä toisellakin tavoin, jolloin niiden kutsuminen muistuttaa enemmän tavallisten muuttujien kutsumista. Alla esimerkit "javamaisilla" gettereillä ja settereillä, ja vaihtoehtoisella toteutuksella:</p>
+<pre class="prettyprint">
+    function Field(val){
+        var value = val;
+       
+        this.getValue = function(){
+            return value;
+        };
+       
+        this.setValue = function(val){
+            value = val;
+        };
+    }
+</pre>
+<pre class="prettyprint">
+    var field = new Field("test");
+    field.value
+    // => undefined
+    field.setValue("test2")
+    field.getValue()
+    // => "test2"
+</pre>
+
+<pre class="prettyprint">
+    function Field(val){
+        var value = val;
+       
+        this.__defineGetter__("value", function(){
+            return value;
+        });
+       
+        this.__defineSetter__("value", function(val){
+            value = val;
+        });
+    }
+</pre>
+
+<pre class="prettyprint">
+    var field = new Field("test");
+    field.value
+    // => test
+    field.value = "test2";
+    field.value
+    // => "test2"
+</pre>
+
 	</div>
 </div>
 
