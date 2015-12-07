@@ -26,6 +26,7 @@
 					<li><a href="#viikko1">Viikko 1</a></li>
 					<li><a href="#viikko2">Viikko 2</a></li>
 					<li><a href="#viikko3">Viikko 3</a></li>
+					<li><a href="#viikko4">Viikko 4</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -937,6 +938,80 @@ stringiksi <i>toString</i> -metodilla. Tämä stringi on "[object Object]"
 
 </div>
 </div>
+<h2 id="viikko4">Viikko 4</h2>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">I hope"! ;-)</h3>
+	</div>
+	<div class="panel-body">
+<p>
+Ohjelmoinnissa tulee useinkin vastaan tilanteita, joissa ohjelmakoodi toistuu perin samanlaisena useassa kohdassa. Hyvän ohjelmointitavan mukaista on välttää copy-paste tyylistä ohjelmointia, jossa tarvittava koodi vain kopioidaan sinne missä sitä tarvitaan, vaikka se löytyisikin jo toisesta paikasta aivan samanlaisena.</p>
+
+<p>Hyvä ohjelmointitapa myös Javascriptissa on uudelleenkäyttää koodia ja välttää näin kopioimista. Yksi hyvä tapa jo valmiin koodin käyttöön on javascriptin prototyyppeihin perustuva perintä. Perintä on yksi keino, jonka avulla voidaan välttyä kirjoittamasta jo kerran kirjoitettua koodia uudestaan. Jos perintää ei erikseen määritellä niin luotu olio perii Objectin prototyyppiolion.</p>
+
+<p>Jokaisella oliolla on oma prototyyppinsä, jonka se on perinyt oliota luodessa. Prototyyppi perintä jatkuu ketjumaisesti aina Object-olion prototyyppikenttään, joka viittaa tyhjään arvoon ”<code>null</code>”. Prototyyppiketju voidaan myös siis katkaista lisäämällä olion prototyyppikentän arvoksi ”<code>null</code>”.</p>
+
+<p>Prototyyppi perintää hyödynnettäessä ohjelmointi suoritetaan niin että perittävät arvot ja funktiot sijoitetaan aina ylemmälle tasolle eli siirrytään ylöspäin prototyyppiketjussa. Esimerkkinä tästä voisi siis olla:</p>
+<pre class="prettyprint">
+function Graph() {
+  this.vertices = [];
+  this.edges = [];
+}
+
+Graph.prototype = {
+  addVertex: function(v){
+    this.vertices.push(v);
+  }
+};
+
+var g = new Graph();
+</pre>
+<b>Object.create komennon avulla perintää voi suorittaa näin:</b>
+<pre class="prettyprint">
+var a = {a: 1}; 
+// a ---> Object.prototype ---> null
+
+var b = Object.create(a);
+// b ---> a ---> Object.prototype ---> null
+console.log(b.a); // 1 (inherited)
+
+var c = Object.create(b);
+// c ---> b ---> a ---> Object.prototype ---> null
+
+var d = Object.create(null);
+// d ---> null
+console.log(d.hasOwnProperty); 
+// undefined, because d doesn't inherit from Object.prototype
+</pre>
+
+
+
+<b>ECMAScript 6  esitteli uuden luokka tyylisen perinnän:</b>
+<pre class="prettyprint">
+class Polygon {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+
+class Square extends Polygon {
+  constructor(sideLength) {
+    super(sideLength, sideLength);
+  }
+  get area() {
+    return this.height * this.width;
+  }
+  set sideLength(newLength) {
+    this.height = newLength;
+    this.width = newLength;
+  }
+}
+
+var square = new Square(2);</pre>
+	</div>
+</div>
+
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
