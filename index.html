@@ -1,62 +1,64 @@
 <html>
- 
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Ohjelmointitekniikka (Javascript)</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-	<link href="css/template.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ohjelmointitekniikka (Javascript)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link href="css/template.css" rel="stylesheet">
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Ohjelmointitekniikka (Javascript)</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="#viikko1">Viikko 1</a></li>
-					<li><a href="#viikko2">Viikko 2</a></li>
-					<li><a href="#viikko3">Viikko 3</a></li>
-					<li><a href="#viikko4">Viikko 4</a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</nav>
-	<div class="mainBody">
-		<div class="centered">
-			<h2>Jäsenet</h2>
-			<p>Antila, Eero</p>
-			<p>Kiiski, Leo</p>
-			<p>Laukkanen, Olli</p>
-			<p>Seppänen, Jukka-Pekka</p>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Johdanto</h3>
-			</div>
-			<div class="panel-body">
-				<p>Laadimme tämän dokumentin osana Helsingin yliopiston syksyllä 2015 järjestettyä Ohjelmointitekniikka (JavaScript) -kurssia. Dokumentin tarkoituksena on pohtia ja käsitellä erilaisia JavaScriptin ominaisuuksia, ja kuinka ottaa ne huomioon sillä ohjelmoidessa.</p>
-				<p>Pohdimme dokumentissa mm. kuinka lähestyä tyyppiturvallisuutta ja tarkastella arvojen tyyppejä, poikkeuksien toimintaa, kielen kaksiparadigmallisuutta, sekä olioiden toimintaa JavaScriptissä.</p>
-			</div>
-		</div>
-		<h2 id="viikko1">Viikko 1</h2>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Kokonaisluvut</h3>
-			</div>
-			<div class="panel-body">
-				<b><p><code class="prettyprint">Number.isInteger()</code> tarkistaa onko syötteenä saatu arvo kokonaisluku</p></b>
-				<pre class="prettyprint">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ohjelmointitekniikka (Javascript)</a>
+            </div>
+        </div>
+    </nav>
+    <div class="mainBody">
+    <div class ="row">
+        <!-- Sidebar -->
+        <div class="col-md-1" id="leftCol">
+            <ul class="nav nav-stacked" id="sidebar">
+                <li><a href="#johdanto">Johdanto</a></li>
+                <li><a href="#tyypit">Tyyppiturvallisuus ja arvojen tarkistaminen</a></li>
+                <li><a href="#tyypittomyysetc">Tyypittömyyden käyttö, paradigmat, sulkeumat ja poikkeukset</a></li>
+                <li><a href="#olioliteraalitetc">Olioliteraalit, getterit, setterit, aksessorit ja olioiden prototyyppiominaisuudet</a></li>
+                <li><a href="#toistonvaltto">Prototyyppisen perinnän käyttö copy-paste -koodin välttämiseksi</a></li>
+            </ul>
+        </div>
+        <!-- Center body -->
+        <div class="col-md-11" id="mainCol">
+        <div class="centered">
+            <h2>Jäsenet</h2>
+            <p>Antila, Eero</p>
+            <p>Kiiski, Leo</p>
+            <p>Laukkanen, Olli</p>
+            <p>Seppänen, Jukka-Pekka</p>
+        </div>
+        <h2 id="johdanto">Johdanto</h2>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>Laadimme tämän dokumentin osana Helsingin yliopiston syksyllä 2015 järjestettyä Ohjelmointitekniikka (JavaScript) -kurssia. Dokumentin tarkoituksena on pohtia ja käsitellä erilaisia JavaScriptin ominaisuuksia, ja kuinka ottaa ne huomioon sillä ohjelmoidessa.</p>
+                <p>Pohdimme dokumentissa mm. kuinka lähestyä tyyppiturvallisuutta ja tarkastella arvojen tyyppejä, poikkeuksien toimintaa, kielen kaksiparadigmallisuutta, sekä olioiden toimintaa JavaScriptissä.</p>
+            </div>
+        </div>
+        <h2 id="tyypit">Tyyppiturvallisuus ja arvojen tarkistaminen</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" id="viikko1.1">Kokonaisluvut</h3>
+            </div>
+            <div class="panel-body">
+                <b><p><code class="prettyprint">Number.isInteger()</code> tarkistaa onko syötteenä saatu arvo kokonaisluku</p></b>
+                <pre class="prettyprint">
 Number.isInteger(2)	//true
 Number.isInteger(2.4)	//false          
 Number.isInteger("s")	//false              						
@@ -64,45 +66,45 @@ Number.isInteger("2")	//false
 Number.isInteger(2/4)	//false
 Number.isInteger(4/2)	//true
 				</pre>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Luvut yleisesti</h3>
-			</div>
-			<div class="panel-body">
-				<b><p><code class="prettyprint">Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</p></b>
-				<pre class="prettyprint">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Luvut yleisesti</h3>
+            </div>
+            <div class="panel-body">
+                <b><p><code class="prettyprint">Number.isFinite()</code> tarkistaa onko kyseessä äärellinen numero</p></b>
+                <pre class="prettyprint">
 Number.isFinite(2)		//true
 Number.isFinite(2.4)		//true
 Number.isFinite("2")		//false
 Number.isFinite(Infinity)	//false
 Number.isFinite(NaN)		//false
 				</pre>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Merkkijonot</h3>
-			</div>
-			<div class="panel-body">
-				<b><p>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code class="prettyprint">typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</p></b>
-				<pre class="prettyprint">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Merkkijonot</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>Merkkijonojen tyypin validointiin kannattanee käyttää javascriptin <code class="prettyprint">typeof()</code> funktiota, joka palauttaa sille annetun parametrin tyypin.</p></b>
+                <pre class="prettyprint">
 function isString(x) { return typeof(x) === "string" }
 
 isString("x")		//true
 isString(2)		//false
 isString("x" + 2)	//true
 				</pre>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Kokonaislukutaulukot</h3>
-			</div>
-			<div class="panel-body">
-				<b><p>Kokonaislukutaulukon tarkasteluun kehittelimme funktion <code class="prettyprint">isIntegerArray()</code>, joka aluksi tarkistaa onko saatu parametri taulukko ja onko taulukossa edes arvoja. Mikäli vastaanotettu parametri on taulukko, niin käydään yksitellen jokainen taulukon alkio läpi.</p></b>
-				<pre class="prettyprint">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Kokonaislukutaulukot</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>Kokonaislukutaulukon tarkasteluun kehittelimme funktion <code class="prettyprint">isIntegerArray()</code>, joka aluksi tarkistaa onko saatu parametri taulukko ja onko taulukossa edes arvoja. Mikäli vastaanotettu parametri on taulukko, niin käydään yksitellen jokainen taulukon alkio läpi.</p></b>
+                <pre class="prettyprint">
 function isIntegerArray(x){
 	if(!isArray(x) || x.length==0)
 	return false;
@@ -122,15 +124,15 @@ isIntegerArray([1,2])	//true
 isIntegerArray(["1",2])	//false
 isIntegerArray([NaN])	//false
 			</pre>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Lukutaulukot</h3>
-			</div>
-			<div class="panel-body">
-				<b><p>Funktio <code class="prettyprint">isNumberArray()</code> toimii täsmälleen samalla tavalla, kuin edellä mainittu <code class="prettyprint">isIntegerArray()</code>, paitsi että alkioiden tarkistuksessa tarkastellaan vain onko alkio lukutyyppiä.</p></b>
-				<pre class="prettyprint">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Lukutaulukot</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>Funktio <code class="prettyprint">isNumberArray()</code> toimii täsmälleen samalla tavalla, kuin edellä mainittu <code class="prettyprint">isIntegerArray()</code>, paitsi että alkioiden tarkistuksessa tarkastellaan vain onko alkio lukutyyppiä.</p></b>
+                <pre class="prettyprint">
 function isNumberArray(x){
 	if(!isArray(x) || x.length==0)
 	return false;
@@ -152,24 +154,24 @@ isNumberArray([NaN,2])		//false
 isNumberArray([2])		//true
 isNumberArray([Infinity])	//false
 		</pre>
-	</div>
-</div>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Tyyppiturvallisuudesta yleisesti</h3>
-	</div>
-	<div class="panel-body">
-		<b><p>Kuten kurssimateriaaleissa on mainittu, JavaScriptissä muuttujilla ei ole tyyppiä samaan tapaan kuin esimerkiksi Javassa.
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tyyppiturvallisuudesta yleisesti</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>Kuten kurssimateriaaleissa on mainittu, JavaScriptissä muuttujilla ei ole tyyppiä samaan tapaan kuin esimerkiksi Javassa.
 			Ei siis ole olemassa funktiota, joka yksiselitteisesti kertoisi jonkin muuttujan tyypin/luokan kuten Javan <code class="prettyprint">class.getName()</code> -funktio.<br>
 			On kuitenkin useita keinoja, joilla muuttujan tyyppiä voi yrittää tiedustella. Näistä mikään ei kuitenkaan ole "idioottivarma", eli kielen sisäinen toiminta on hyvä olla hallussa.</p></b>
-			<h3><code class="prettyprint">constructor</code> -ominaisuuden käyttäminen</h3>
-			<p>Jokaisella objektilla on arvo <code class="prettyprint">constructor</code> -muuttujalle, mutta riippuen siitä miten objekti alun perin luotiin, ja miten tätä tietoa aiotaan käyttää, ei siitä välttämättä ole mitään hyötyä. Yleisesti ottaen <code class="prettyprint">constructor</code> -muuttujaa voi käyttää seuraavalla tavalla:</p>
-			<pre class="prettyprint">
+                <h3><code class="prettyprint">constructor</code> -ominaisuuden käyttäminen</h3>
+                <p>Jokaisella objektilla on arvo <code class="prettyprint">constructor</code> -muuttujalle, mutta riippuen siitä miten objekti alun perin luotiin, ja miten tätä tietoa aiotaan käyttää, ei siitä välttämättä ole mitään hyötyä. Yleisesti ottaen <code class="prettyprint">constructor</code> -muuttujaa voi käyttää seuraavalla tavalla:</p>
+                <pre class="prettyprint">
 var lista = [1,2,3];
 myArray.constructor == Arrayn	//true
 			</pre>
-			<b><p>Monissa tapauksissa tämä ei kuitenkaan toimi! :</b></p>
-			<pre class="prettyprint">
+                <b><p>Monissa tapauksissa tämä ei kuitenkaan toimi! :</b></p>
+                <pre class="prettyprint">
 function Asia(){}
 
 Asia.prototype = {
@@ -179,62 +181,59 @@ Asia.prototype = {
 	}
 };
 </pre>
-<p>Objektit jotka on luotu komennolla <code class="prettyprint">new Asia</code> omaavat <code class="prettyprint">constructor</code> -muuttujan joka osoittaa <code class="prettyprint">Object</code>:iin, <b>ei</b> <code class="prettyprint">Asia</code>:an</p>
-	<pre class="prettyprint">
+                <p>Objektit jotka on luotu komennolla <code class="prettyprint">new Asia</code> omaavat <code class="prettyprint">constructor</code> -muuttujan joka osoittaa <code class="prettyprint">Object</code>:iin, <b>ei</b> <code class="prettyprint">Asia</code>:an</p>
+                <pre class="prettyprint">
 var asia = new Asia();
 asia.constructor		// function Object() { [native code] }
-	</pre>
-	vertaa:
-	<pre class="prettyprint">
+	</pre> vertaa:
+                <pre class="prettyprint">
 myArray.constructor	//function Array() { [native code] }
 	</pre>
-	<p>Jos et siis hallinnoi/tunne käyttämääsi kirjastoa/lähdekoodia, niin et voi luottaa siihen, että muuttujien "tyyppi"
-		on sama kuin sen nimi. Toinen esimerkki, jossa construktori ei vastaa muuttujan "tyyppiä", on tilanne jossa käytetään multiple inheritance:a</p>
-		<pre class="prettyprint">
+                <p>Jos et siis hallinnoi/tunne käyttämääsi kirjastoa/lähdekoodia, niin et voi luottaa siihen, että muuttujien "tyyppi" on sama kuin sen nimi. Toinen esimerkki, jossa construktori ei vastaa muuttujan "tyyppiä", on tilanne jossa käytetään multiple inheritance:a</p>
+                <pre class="prettyprint">
 function a() { this.foo = 1;}
 function b() { this.bar = 2; }
 b.prototype = new a(); // b perii a:n
 		</pre>
-		<p>taaskaan asiat eivät toimi odotetulla tavalla:</p>
-		<pre class="prettyprint">
+                <p>taaskaan asiat eivät toimi odotetulla tavalla:</p>
+                <pre class="prettyprint">
 var f = new b(); 	// initialisoidaan uusi muuttuja b:n konstruktorilla
 f.constructor == b 	//false
 f.constructor == a 	//true
 		</pre>
-		<p>b:n todellinen konstuktori on siis a!</p>
-		<pre class="prettyprint">
+                <p>b:n todellinen konstuktori on siis a!</p>
+                <pre class="prettyprint">
 f.constructor 	//function a() { this.foo = 1;}
 		</pre>
-		<p>Voit siis saada odottamattomia paluuarvoja, jos objektin prototyypiksi on asetettu jokin muu objekti Konstruktoreista ja prototyypeistä kuitenkin myöhemmin lisää - älä hämmenny vaikket vielä ymmärtäisi miksi näin tapahtuu! </p>
-
-		<h3><code class="prettyprint">instanceof</code> -operaattorin käyttö</h3>
-		<p><code class="prettyprint">instanceof</code> -operaattorilla voi myös tutkia objektin tyyppiä, mutta silläkin on omat rajoitteensa:</p>
-		<pre class="prettyprint">
+                <p>Voit siis saada odottamattomia paluuarvoja, jos objektin prototyypiksi on asetettu jokin muu objekti Konstruktoreista ja prototyypeistä kuitenkin myöhemmin lisää - älä hämmenny vaikket vielä ymmärtäisi miksi näin tapahtuu! </p>
+                <h3><code class="prettyprint">instanceof</code> -operaattorin käyttö</h3>
+                <p><code class="prettyprint">instanceof</code> -operaattorilla voi myös tutkia objektin tyyppiä, mutta silläkin on omat rajoitteensa:</p>
+                <pre class="prettyprint">
 var myArray = [1,2,3];
 myArray instanceof Array;	//true
 myArray instanceof Object;	//true
 		</pre>
-		<p><code class="prettyprint">instanceof</code> ei kuitenkaan toimi primitiiveillä:</p>
-		<pre class="prettyprint">
+                <p><code class="prettyprint">instanceof</code> ei kuitenkaan toimi primitiiveillä:</p>
+                <pre class="prettyprint">
 3 instanceof Number 		//false
 'abc' instanceof String 	//false
 true instanceof Boolean 		//false
 		</pre>
-		<p><code class="prettyprint">instanceof</code> -operaattori vaatii wrapperin primitiiveille toimiakseen:</p>
-		<pre class="prettyprint">
+                <p><code class="prettyprint">instanceof</code> -operaattori vaatii wrapperin primitiiveille toimiakseen:</p>
+                <pre class="prettyprint">
 new Number(3) instanceof Number 	//true
 		</pre>
-		<p>Ironisesti <code class="prettyprint">.constructor</code> sen sijaan toimii primitiivien kanssa ongelmitta:</p>
-		<pre class="prettyprint">
+                <p>Ironisesti <code class="prettyprint">.constructor</code> sen sijaan toimii primitiivien kanssa ongelmitta:</p>
+                <pre class="prettyprint">
 3..constructor === Number 	//true
 //3:n jälkeen on 2 pistettä, koska JS tulkitsee ensimmäisen pisteen desimaalipisteenä
 
 'abc'.constructor === String 	//true
 true.constructor === Boolean 	//true
 		</pre>
-		<h3><code class="prettyprint">.constructor.name</code> -muuttujan käyttö</h3>
-		<p>Jos halutaan siistimpi muoto objektin "tyypistä", niin voidaan pyytää konstruktorin <code class="prettyprint">.name</code> -muuttujan arvoa:</p>
-		<pre class="prettyprint">
+                <h3><code class="prettyprint">.constructor.name</code> -muuttujan käyttö</h3>
+                <p>Jos halutaan siistimpi muoto objektin "tyypistä", niin voidaan pyytää konstruktorin <code class="prettyprint">.name</code> -muuttujan arvoa:</p>
+                <pre class="prettyprint">
 function Point2D(x,y){
 	this.x = x;
 	this.y = y;
@@ -248,16 +247,16 @@ piste.contructor
 	this.y = y;
 }"
 	</pre>
-	<p> mutta:</p>
-	<pre class="prettyprint">
+                <p> mutta:</p>
+                <pre class="prettyprint">
 piste.constructor.name
 //tulostaa
 "Point2D"
 	</pre>
-	<p><code class="prettyprint">.name</code> ei kuitenkaan ilmeisesti toimi kaikissa selaimissa/selainten versioissa</p>
-	<h3><code class="prettyprint">Object.prototype.toString</code> käyttö</h3>
-	<p><code class="prettyprint">Object.prototype.toString</code>:iä voi käyttää JavaScriptin natiiveille muuttujatyypeille:</p>
-	<pre class="prettyprint">
+                <p><code class="prettyprint">.name</code> ei kuitenkaan ilmeisesti toimi kaikissa selaimissa/selainten versioissa</p>
+                <h3><code class="prettyprint">Object.prototype.toString</code> käyttö</h3>
+                <p><code class="prettyprint">Object.prototype.toString</code>:iä voi käyttää JavaScriptin natiiveille muuttujatyypeille:</p>
+                <pre class="prettyprint">
 Object.prototype.toString.call('abc')
 "[object String]"
 
@@ -267,8 +266,8 @@ Object.prototype.toString.call(/abc/)
 Object.prototype.toString.call([1,2,3])
 "[object Array]"
 	</pre>
-	<p>Pientä apufunktiota käyttämällä, saadaan paluuarvo sievään muotoon:</p>
-	<pre class="prettyprint">
+                <p>Pientä apufunktiota käyttämällä, saadaan paluuarvo sievään muotoon:</p>
+                <pre class="prettyprint">
 function type(obj){
 	return Object.prototype.toString.call(obj).slice(8, -1);
 }
@@ -276,9 +275,9 @@ function type(obj){
 type('abc')
 "String"
 </pre>
-<h3>Yhteenveto tyypin määrittelemisen problematiikasta</h3>
-<p>Tyypin määrittelyn ongelmallisuus tulee siitä, että objekteja voidaan määritellä niin monella eri tapaa:</p>
-<pre class="prettyprint">
+                <h3>Yhteenveto tyypin määrittelemisen problematiikasta</h3>
+                <p>Tyypin määrittelyn ongelmallisuus tulee siitä, että objekteja voidaan määritellä niin monella eri tapaa:</p>
+                <pre class="prettyprint">
 // nimetyn funktion käyttäminen:
 function Foo() { this.a = 1; }
 var obj = new Foo();
@@ -318,26 +317,26 @@ obj = { foo : 1 };
 (obj.constructor == Object);        // true
 (obj.constructor.name == "Object"); // true
 </pre>
-</div>
-</div>
-<h2 id="viikko2">Viikko 2</h2>
-<div class="panel panel-default">
-<div class="panel-heading">
-    <h3 class="panel-title">Tyypittömyyden käyttö funktioissa/algoritmeissa</h3>
-</div>
-<div class="panel-body">
-<p>Muuttujien tyypittömyys helpottaa esimerkiksi funktioiden määrittelyvaiheessa. Toisin kuin esimerkiksi Javassa, 
-Javascriptissä ei tarvitse funktion määrittelyvaiheessa kertoa minkä tyyppisiä (esim. int, String jne.) sen parametrit tulevat olemaan/paljonko niitä annetaan. Tämä vähentää ns. boiler plate -koodin kirjoittamisen tarvetta. Wikipedia määrittelee boiler plate -koodin seuraavalla tavalla:</p>
-<blockquote>boilerplate code or boilerplate is the sections of code that have to be included in many places with little or no alteration<footer>Wikipedia</footer></blockquote>
-<p>Ei siis ole tarvetta luoda useampaa funktiota (joissa on paljolti samaa koodia) vain sen takia, että kaikki
-mielekkäät parametrityyppien kombinaatiot pitäisi ottaa huomioon. Tarkastellaan seuraavaa yksinkertaista funktiota, ja sen palauttamia arvoja:</p>
-<pre class="prettyprint">
+            </div>
+        </div>
+        <h2 id="tyypittomyysetc">Tyypittömyyden käyttö, paradigmat, sulkeumat ja poikkeukset</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tyypittömyyden käyttö funktioissa/algoritmeissa</h3>
+            </div>
+            <div class="panel-body">
+                <p>Muuttujien tyypittömyys helpottaa esimerkiksi funktioiden määrittelyvaiheessa. Toisin kuin esimerkiksi Javassa, Javascriptissä ei tarvitse funktion määrittelyvaiheessa kertoa minkä tyyppisiä (esim. int, String jne.) sen parametrit tulevat olemaan/paljonko niitä annetaan. Tämä vähentää ns. boiler plate -koodin kirjoittamisen tarvetta. Wikipedia määrittelee boiler plate -koodin seuraavalla tavalla:</p>
+                <blockquote>boilerplate code or boilerplate is the sections of code that have to be included in many places with little or no alteration
+                    <footer>Wikipedia</footer>
+                </blockquote>
+                <p>Ei siis ole tarvetta luoda useampaa funktiota (joissa on paljolti samaa koodia) vain sen takia, että kaikki mielekkäät parametrityyppien kombinaatiot pitäisi ottaa huomioon. Tarkastellaan seuraavaa yksinkertaista funktiota, ja sen palauttamia arvoja:</p>
+                <pre class="prettyprint">
 var concatORsum = function(a,b){
   return a+b;
 };
 </pre>
-<p>Parametrien tyyppiä ei tarvitse erikseen määritellä, mutta functio kyllä toimii eri tavalla riippuen siitä mikä on annetun parametrin arvon tyyppi. Pitää siis tietää miten natiivit funktiot käsittelevät eri arvoja ja niiden välisiä operaatioita:</p>
-<pre class="prettyprint">
+                <p>Parametrien tyyppiä ei tarvitse erikseen määritellä, mutta functio kyllä toimii eri tavalla riippuen siitä mikä on annetun parametrin arvon tyyppi. Pitää siis tietää miten natiivit funktiot käsittelevät eri arvoja ja niiden välisiä operaatioita:</p>
+                <pre class="prettyprint">
 concatORsum(5,5);	//"10"
 concatORsum("5",5)	//"55"
 concatORsum("a",5)	//"a5"
@@ -349,26 +348,25 @@ concatORsum(a,b)	//"[object Object][object Object]"
 //mutta
 concatORsum(a.x,b.x)	//"10"
 </pre>
-<p>Otetaan seuraavaksi tarkasteltavaksi funktio, joka muodostaa annetuista parametreista (=argumenteista) Arrayn,
-tekee siitä ns. flatlistin (eli yhdistää sisäkkäiset Arrayt), ja palauttaa sen sitten sortattuna:
-</p>
-<pre class="prettyprint">
+                <p>Otetaan seuraavaksi tarkasteltavaksi funktio, joka muodostaa annetuista parametreista (=argumenteista) Arrayn, tekee siitä ns. flatlistin (eli yhdistää sisäkkäiset Arrayt), ja palauttaa sen sitten sortattuna:
+                </p>
+                <pre class="prettyprint">
 var concatANDsort = function(){
   var args = Array.prototype.slice.call(arguments);
   var flatArray = [].concat.apply([], args);
   return flatArray.sort();
 };
 </pre>
-<p>Funktio palauttaa seuraavanlaisia listoja seuraavilla syötteillä:</p>
-<pre class="prettyprint">
+                <p>Funktio palauttaa seuraavanlaisia listoja seuraavilla syötteillä:</p>
+                <pre class="prettyprint">
 concatANDsort(1,3,2)	//"[1,2,3]"
 concatANDsort(5,[3,4],1)	//"[1,3,4,5]"
 
 //mutta
 concatANDsort(1,3,2,11,5)	//"[1, 11, 2, 3, 5]"
 </pre>
-<p>sort -funktio siis järjestää alkiot aakkosellisesti! Tehdään apufunktio, joka voidaan antaa parametrina [].sort():lle</p>
-<pre class="prettyprint">
+                <p>sort -funktio siis järjestää alkiot aakkosellisesti! Tehdään apufunktio, joka voidaan antaa parametrina [].sort():lle</p>
+                <pre class="prettyprint">
 var sortNumerically = function(a,b) {
     return a - b;
 };
@@ -382,15 +380,15 @@ var concatANDsort = function(){
 //nyt sorttaus toimii kuten halutaan
 concatANDsort(1,3,[2,11],5)	//"[1, 2, 3, 5, 11]""
 </pre>
-<p>Yritetään sitten antaa parametrille jotain muutakin arvoja kuin lukuliteraaleja tai Arrayta, jotka koostuvat lukuliteraaleista: </p>
-<pre class="prettyprint">
+                <p>Yritetään sitten antaa parametrille jotain muutakin arvoja kuin lukuliteraaleja tai Arrayta, jotka koostuvat lukuliteraaleista: </p>
+                <pre class="prettyprint">
 concatANDsort(1,"3",2)	//"[1,2,"3"]"	sorttaus siis onnistuu, mutta funktio ei muuta arvon "3" tyyppiä
 
 //mutta
 concatANDsort(2,1,"b","a",[5],4,3) //"[1, 2, "b", "a", 3, 4, 5]"
 </pre>
-<p>Funktio ei siis osaa sortata enää stringejä. Muutetaan sorttausfunktio seuraavanlaiseksi:</p>
-<pre class="prettyprint">
+                <p>Funktio ei siis osaa sortata enää stringejä. Muutetaan sorttausfunktio seuraavanlaiseksi:</p>
+                <pre class="prettyprint">
 var compare = function(a, b) {
   if (a < b) {
     return -1;
@@ -407,58 +405,55 @@ concatANDsort(2,1,"b","a",[5],4,3)	//[1, 2, "a", "b", 3, 4, 5]
 
 concatANDsort(concatORsum(1,2),2,1)	//"[1,2,3]"
 </pre>
-<p>
-Pitää siis muistaa, että vaikka muuttujilla ei ole tyyppiä, niin arvoilla kyllä on tyypit, mikä vaikuttaa funktion toimintaan. Muuttujien tyypittömyys helpottaa joissain osin funktioiden/algoritmien kirjoittamista, mutta voi tuottaa myös päänvaivaa varsinkin jos testausta ei ole toteutettu huolella.<br> Funktiot ovat usein lyhyempiä, ytimekkäämpiä, niitä on helpompi käyttää epäkonventionaalisesti (jos tietää mitä tekee), interaktiivisempia ja paremmin polymorfismia hyödyntäviä.<br>
-Toisaalta jos tyyppien määrittely on pakollista, niin se johtaa usein parempaan koodin designiin, mahdollistaa käännösaikaisen koodin tarkastuksen, koodin autocompletionin kirjoitusvaiheessa, ja erinäköisten rajapintojen
-käytön polymorfismin tavoittelussa.
-</p>
-</div>
-</div>
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Paradigmat</h3>
-	</div>
-	<div class="panel-body">
-		<p><b>Imperatiivinen</b></p>
-		<p>Imperatiivinen ohjelmointi on yleisin ohjelmointiparadigma, ja monelle ensimmäinen tai muuten tutuin tyyli ohjelmoida, minkä seurauksena se on monelle myös luonteva tyyli ohjelmoida. Imperatiivisessa ohjelmoinnissa ohjelman toiminta määritellään yksiselitteisesti vaiheittain ja ohjelman komennot suoritetaan järjestyksessä yksi kerrallaan. Yksinkertaistettuna imperatiivinen ohjelmointi on lista ohjeista tai vaiheista, jotka tietokoneen tulee suorittaa. Suorituksen tilan seuraamiseen ja muokkaamiseen käytetään muuttujia.</p>
-<p>Kertoma imperatiivisella toteutuksella:</p>
-<pre class="prettyprint">function factorial(n) {
+                <p>
+                    Pitää siis muistaa, että vaikka muuttujilla ei ole tyyppiä, niin arvoilla kyllä on tyypit, mikä vaikuttaa funktion toimintaan. Muuttujien tyypittömyys helpottaa joissain osin funktioiden/algoritmien kirjoittamista, mutta voi tuottaa myös päänvaivaa varsinkin jos testausta ei ole toteutettu huolella.
+                    <br> Funktiot ovat usein lyhyempiä, ytimekkäämpiä, niitä on helpompi käyttää epäkonventionaalisesti (jos tietää mitä tekee), interaktiivisempia ja paremmin polymorfismia hyödyntäviä.
+                    <br> Toisaalta jos tyyppien määrittely on pakollista, niin se johtaa usein parempaan koodin designiin, mahdollistaa käännösaikaisen koodin tarkastuksen, koodin autocompletionin kirjoitusvaiheessa, ja erinäköisten rajapintojen käytön polymorfismin tavoittelussa.
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Paradigmat</h3>
+            </div>
+            <div class="panel-body">
+                <p><b>Imperatiivinen</b></p>
+                <p>Imperatiivinen ohjelmointi on yleisin ohjelmointiparadigma, ja monelle ensimmäinen tai muuten tutuin tyyli ohjelmoida, minkä seurauksena se on monelle myös luonteva tyyli ohjelmoida. Imperatiivisessa ohjelmoinnissa ohjelman toiminta määritellään yksiselitteisesti vaiheittain ja ohjelman komennot suoritetaan järjestyksessä yksi kerrallaan. Yksinkertaistettuna imperatiivinen ohjelmointi on lista ohjeista tai vaiheista, jotka tietokoneen tulee suorittaa. Suorituksen tilan seuraamiseen ja muokkaamiseen käytetään muuttujia.</p>
+                <p>Kertoma imperatiivisella toteutuksella:</p>
+                <pre class="prettyprint">function factorial(n) {
   var factorial = 1;
   for(i = 1; i <= n; i++) {
     factorial = factorial * i;
   }
   return factorial;
 }</pre>
-		<p><b>Funktionaalinen</b></p>
-		<p>Funktionaalinen ohjelmointi on lähestymiseltään matemaattisempi vaihtoehto. Puhtaasti funktionaalisessa ohjelmoinnissa ei käytetä muuttujia tilan seuraamisessa. Funktionaalinen ohjelmointi pohjautuu rekursioon ja funktiot viittaavat rekursiivisesti itseensä, tai toiseen funktioon. Funktionaalisessa ohjelmassa keskitytään enemmän siihen, mitä kone tekee, kuin miten se tekee sen. Funktionaalisen ohjelmoinnin eräs etu on sen selkeä yhteys matematiikkaan, jolloin matemaattiset funktiot voi helposti muotoilla vastaamaan määritelmää.</p>
-<p>Kertoma funktionaalisella toteutuksella:</p>
-<pre class="prettyprint">function factorial(n) {
+                <p><b>Funktionaalinen</b></p>
+                <p>Funktionaalinen ohjelmointi on lähestymiseltään matemaattisempi vaihtoehto. Puhtaasti funktionaalisessa ohjelmoinnissa ei käytetä muuttujia tilan seuraamisessa. Funktionaalinen ohjelmointi pohjautuu rekursioon ja funktiot viittaavat rekursiivisesti itseensä, tai toiseen funktioon. Funktionaalisessa ohjelmassa keskitytään enemmän siihen, mitä kone tekee, kuin miten se tekee sen. Funktionaalisen ohjelmoinnin eräs etu on sen selkeä yhteys matematiikkaan, jolloin matemaattiset funktiot voi helposti muotoilla vastaamaan määritelmää.</p>
+                <p>Kertoma funktionaalisella toteutuksella:</p>
+                <pre class="prettyprint">function factorial(n) {
   if(n === 0) {
     return 1;
   } else {
     return n*factorial(n-1);
   }
 }</pre>
-<p><b>Kumpaa suosia?</b></p>
-<p>JavaScriptin vahvuus on sen kaksiparadigmallisuuden tuoma funktionaalisuus. Täten funktionaalisten ominaisuuksien hyödyntämättä jättäminen olisi haaskeliasta. Funktiosta riippuen, funktionaalisesti ohjelmoituna ohjelmasta voidaan saada merkittävästi lyhyempi ja elegantimpi, kuin imperatiivisesti. Toisaalta monimutkaisen funktionaalisen ohjelman lukeminen ja hahmottaminen voi olla vaikeampaa kuin imperatiivisen, varsinkin kun imperatiivinen ohjelmointi on monelle tutumpaa ja laajemmin käytössä. Kummassakaan paradigmassa ei suoranaisesti ole yleisellä tasolla mitään toista parempaa, vaan valinnan tulisi perustua ohjelman käyttötarpeeseen ja siihen mitä ohjelmoija haluaa saavuttaa. Koska JavaScript on nimenomaan kaksiparadigmallinen, parhaiten tätä tulee hyödynnettyä käyttämällä sekä imperatiivista, että funktionaalista ohjelmointia.</p>
-	</div>
-</div>
-<div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Sulkeumat</h3>
-                </div>
-                
-                <div class="panel-body">
-                    <b><p>
+                <p><b>Kumpaa suosia?</b></p>
+                <p>JavaScriptin vahvuus on sen kaksiparadigmallisuuden tuoma funktionaalisuus. Täten funktionaalisten ominaisuuksien hyödyntämättä jättäminen olisi haaskeliasta. Funktiosta riippuen, funktionaalisesti ohjelmoituna ohjelmasta voidaan saada merkittävästi lyhyempi ja elegantimpi, kuin imperatiivisesti. Toisaalta monimutkaisen funktionaalisen ohjelman lukeminen ja hahmottaminen voi olla vaikeampaa kuin imperatiivisen, varsinkin kun imperatiivinen ohjelmointi on monelle tutumpaa ja laajemmin käytössä. Kummassakaan paradigmassa ei suoranaisesti ole yleisellä tasolla mitään toista parempaa, vaan valinnan tulisi perustua ohjelman käyttötarpeeseen ja siihen mitä ohjelmoija haluaa saavuttaa. Koska JavaScript on nimenomaan kaksiparadigmallinen, parhaiten tätä tulee hyödynnettyä käyttämällä sekä imperatiivista, että funktionaalista ohjelmointia.</p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sulkeumat</h3>
+            </div>
+            <div class="panel-body">
+                <b><p>
                         Javascriptissä muuttujat ovat joko paikallisia tai globaaleja, mutta 
                         sulkeumien avulla niistä voi tehdä myös privaatteja. Sulkeuma kapseloi
                         muuttujansa. Sulkeuma käytännössä luodaan laittamalla funtio toisen funktion sisään.
                         Sulkeumalla voi hyvin hallita sitä miten ohjelmoija ja käyttäjä pystyy vaikuttamaan
                         sen kapseloimaan tietoon.
                     </p></b>
-                    
-                    <b><p>
+                <b><p>
                         Sulkeumia on hyvä käyttää tiedon kapselointiin ja globaalien muuttujien minimointiin.
                         Globaalit muuttujat ovat hyvin vaarallisia, koska ohjelmoija voi vahingossa muuttaa
                         globaalin muuttujan arvoa rikkoen samalla ohjelman. Tämä on yleistä varsinkin 
@@ -467,8 +462,7 @@ käytön polymorfismin tavoittelussa.
                         <code>var x</code>, voitaisiin kapseloida se funktion sisälle niin, että sitä pääsee
                         muokkaamaan vain tietyillä määritellyillä funktioilla:
                     </p></b>
-                    
-<pre class="prettyprint">function Tarkea() {
+                <pre class="prettyprint">function Tarkea() {
     var x = 0;
     this.kasvata = function() {
         x++;
@@ -480,19 +474,16 @@ käytön polymorfismin tavoittelussa.
         return x;
     }
 }</pre>
-                    
-                    <b><p>
+                <b><p>
                         Muuttujaan x ei pääse suoraan käsiksi ja sitä voi muokata vain 
                         annetuilla funktiolla <code>kasvata()</code> ja <code>vahenna()</code>
                         Ilkeä tai tyhjä ohjelmoija ei pääse tässä tapauksessa suoraan muuttamaan
                         x:n arvoa vaikka eri tyyppiseksi.
                     </p></b>
-                    
-                    <b><p>
+                <b><p>
                         Yllä olevaa funktiota voi käyttää esimerkiksi seuraavasti:
                     </p></b>
-                    
-<pre class="prettyprint">var funktio = new Tarkea();     // Luo uuden olion ja asettaa muuttujan funktio viittaamaan siihen
+                <pre class="prettyprint">var funktio = new Tarkea();     // Luo uuden olion ja asettaa muuttujan funktio viittaamaan siihen
 console.log(funktio.tulosta()); // 0
 funktio.kasvata();              // Kasvattaa funktion sisäisen muuttujan x arvoa
 console.log(funktio.tulosta()); // 1
@@ -504,22 +495,19 @@ console.log(funktio.tulosta());       // 1
 console.log(toinenFunktio.tulosta()); // -1.
 
 console.log(funktio.x);         // undefined. Ei siis päästä suoraan käsiksi x:ään</pre>
-                
-                    <b><p>
+                <b><p>
                         Yllä olevassa esimerkissä huomataan, että tieto pysyy samana koko ohjelman
                         suoritusajan, ja samantyyppisiä olioita voidaan luoda monia ilman, että ne
                         vaikuttavat toisiinsa suoraan. Jos halutaan pitää globaalia tietoa mukana 
                         sovelluksessa koko sen suoritusajan, sen kapseloiminen yllä osoitetulla tavalla
                         sulkeumaan on parempi vaihtoehto globaalien muuttujien sijaan. 
                     </p></b>
-                    
-                    <b><p>
+                <b><p>
                         Yhdistämällä sulkeuman anonyymeihin funtiohin, eli funktioihin joilla ei ole nimeä ja 
                         jotka määritellään vain muuttujiin, saadaan moduulit. Seuraavassa yksinkertainen esimerkki
                         moduulista:
                     </p></b>
-                    
-<pre class="prettyprint">var testaus = {};
+                <pre class="prettyprint">var testaus = {};
 
 testaus.testi = (function() {
     var lista = new Array();
@@ -542,15 +530,13 @@ testaus.testi = (function() {
 console.log(testaus.testi.tulosta()); // [] (tyhjä lista)
 testaus.testi.lisaa("Hei Hei!");      
 console.log(testaus.testi.tulosta()); // ["Hei Hei!"]</pre>
-                    
-                    <b><p>
+                <b><p>
                         Yllä olevan moduulin sisältämä data on ainutkertaista, eli siitä ei voi luoda uusia
                         olioita. Voi olla vain yksi tälläinen moduuli. Tämä voi olla suotavaa joissain tilanteissa
                         esim. jos halutaan säilyttää globaalia dataa hyvin hallitussa ympäristössä. Moduulit voi myös
                         yhdistää olioihin niin että niistä voi luoda instansseja:
                     </p></b>
-                    
-<pre class="prettyprint">var testaus = {};
+                <pre class="prettyprint">var testaus = {};
 
 testaus.Yritys = (function() {
     // Konstruktori funktio
@@ -582,15 +568,13 @@ toinenYhdistys.lisaa();
 
 console.log(yhdistys.tulosta());       // 6
 console.log(toinenYhdistys.tulosta()); // 3</pre>
-                    
-                    <b><p>
+                <b><p>
                         Tapahtumien hallintaan sulkeumat ovat myös oivallisia.  Esimerkiksi jos sivulla on useita samantyyppisiä
                         tapahtumia, voidaan luoda funktio, joka ottaa parametrin ja tämän parametrin pohjalta palauttaa toisen funktion.
                         Alempi esimerkki olettaa, että html-sivulla on id:llä 'arvoruutu' merkitty elementti. Funktion voisi esimerkiksi laittaa
                         kolmelle eri napille suoritettavaksi kun niitä painetaan.
                     </p></b>
-                    
-<pre class="prettyprint">function asetaArvo(arvo) {
+                <pre class="prettyprint">function asetaArvo(arvo) {
     return function() {
         document.getElementById('arvoruutu').value = arvo;
     };
@@ -599,72 +583,59 @@ console.log(toinenYhdistys.tulosta()); // 3</pre>
 var arvo12 = asetaArvo(12);
 var arvo14 = asetaArvo(14);
 var arvo16 = asetaArvo(16);</pre>
-                    
-                    <b><p>
+                <b><p>
                         Pitää ottaa huomioon myös se, ettei käytä sulkeumia turhaan, sillä se heikentää suorituskykyä.
                         Kun luodaan uusi olio ja käytössä on sulkeuma, täytyy jokaisen olion luonnin yhteydessä käydä
                         läpi kaikki metodimäärittelyt.
                         Jos sulkeuman etuja ei tarvita, kannattaa käyttää vain prototyyppi määrittelyä.
                     </p></b>
-                    
-                </div>
             </div>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">JavaScript poikkeukset</h3>
-	</div>
-	<div class="panel-body">
-		<p>Poikkeus on tapahtuma joka tapahtuu kun ohjelman normaalissa suorituksessa ilmenee häiriö.
-			Javascriptin poikkeusten käsittely noudattaa Javalle tyypillistä <code>try - catch - finally</code> kaavaa, jossa poikkeuksia voidaan lisäksi heittää <code>throw</code> -komennolla.</p>
-
-			<p>Mikäli poikkeus ei sisällä <code>catch</code> -osaa, siepataan sellainen ympäröivästä lauseesta.</p>
-
-			<p>EcmaScriptin määrittelyssä poikkeuksia on kuutta eri tyyppiä:
-			<ul>
-				<li>EvalError, joka ei ole käytössä mutta on mukana yhteensopivuuden vuoksi</li>
-				<li>RangeError = numeerinen arvo yli sallitun alueen</li>
-				<li>ReferenceError = epäkelpo viite</li>
-				<li>SyntaxError = jäsennysvirhe</li>
-				<li>TypeError = operandin tyyppi eraa odotetusta</li>
-				<li>URIError = URI:n käsittelyfunktioita käytetty väärin</li>
-			</ul>
-			</p>
-
-			<p>Javascript on poikkeusten käsittelyssä perin vapaa, sillä poikkeuksen arvona voidaan heittää melkeinpä mitä tahansa. Poikkeuksena voidaan heittää vaikkapa merkkijono, luku tai funktio.</p>
-
-			<pre class="prettyprint">
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">JavaScript poikkeukset</h3>
+            </div>
+            <div class="panel-body">
+                <p>Poikkeus on tapahtuma joka tapahtuu kun ohjelman normaalissa suorituksessa ilmenee häiriö. Javascriptin poikkeusten käsittely noudattaa Javalle tyypillistä <code>try - catch - finally</code> kaavaa, jossa poikkeuksia voidaan lisäksi heittää <code>throw</code> -komennolla.</p>
+                <p>Mikäli poikkeus ei sisällä <code>catch</code> -osaa, siepataan sellainen ympäröivästä lauseesta.</p>
+                <p>EcmaScriptin määrittelyssä poikkeuksia on kuutta eri tyyppiä:
+                    <ul>
+                        <li>EvalError, joka ei ole käytössä mutta on mukana yhteensopivuuden vuoksi</li>
+                        <li>RangeError = numeerinen arvo yli sallitun alueen</li>
+                        <li>ReferenceError = epäkelpo viite</li>
+                        <li>SyntaxError = jäsennysvirhe</li>
+                        <li>TypeError = operandin tyyppi eraa odotetusta</li>
+                        <li>URIError = URI:n käsittelyfunktioita käytetty väärin</li>
+                    </ul>
+                </p>
+                <p>Javascript on poikkeusten käsittelyssä perin vapaa, sillä poikkeuksen arvona voidaan heittää melkeinpä mitä tahansa. Poikkeuksena voidaan heittää vaikkapa merkkijono, luku tai funktio.</p>
+                <pre class="prettyprint">
 	throw "Error3";		// tuottaa poikkeuksen merkkijonolla ”Error3”
 	throw 666;		// tuottaa poikkeuksen arvolla 666
 	throw true;     	// tuottaa poikkeuksen arvolla true</pre>
-
-
-			<b>Poikkeuksena merkkijono:</b>
-				<pre class="prettyprint">
+                <b>Poikkeuksena merkkijono:</b>
+                <pre class="prettyprint">
 	try {
 		throw "Poikkeus tapahtunut";
 	} catch(exception) {
 		alert(exception); //Käyttäjälle alert -ikkuna varoitus tekstillä.
 	}</pre>
-
-			<b>Poikkeuksena luku:</b>
-				<pre class="prettyprint">
+                <b>Poikkeuksena luku:</b>
+                <pre class="prettyprint">
 	try {
 		throw 666;
 	} catch(exception) {
 		alert(exception); 	//Käyttäjälle alert -ikkuna tekstillä 666.
 	}</pre>
-
-			<b>Poikkeuksena funktio:</b>
-				<pre class="prettyprint">
+                <b>Poikkeuksena funktio:</b>
+                <pre class="prettyprint">
 	try {
 		throw function() { alert(”Poikkeus tapahtunut!”) };
 	} catch(exception) {
 		exception(); 	//Käyttäjälle alert -ikkuna varoitus tekstillä.
 	}</pre>
-		
-
-		<b>Poikkeus voi heittää uuden poikkeuksen:</b>
-			<pre class="prettyprint">
+                <b>Poikkeus voi heittää uuden poikkeuksen:</b>
+                <pre class="prettyprint">
 	try {
 		throw n; // heittää poikkeuksen numeerisella arvolla
 	} catch (e) {
@@ -674,10 +645,8 @@ var arvo16 = asetaArvo(16);</pre>
 			throw e;
 		}
 	}</pre>
-
-<p>Javascriptillä funktioita voidaan suorittaa käytännössä lähes kokonaan poikkeuksiin perustuen. Esimerkkinä funktio, joka käyttää poikkeuksia palautteen tulostamiseen:</p>
-
-<pre class="prettyprint">
+                <p>Javascriptillä funktioita voidaan suorittaa käytännössä lähes kokonaan poikkeuksiin perustuen. Esimerkkinä funktio, joka käyttää poikkeuksia palautteen tulostamiseen:</p>
+                <pre class="prettyprint">
 	function myFunction(x) {
 		try { 
 			if(x == "") throw "empty";
@@ -689,84 +658,56 @@ var arvo16 = asetaArvo(16);</pre>
 			alert("Input is " + err);
 		}
 	}</pre>
-
-<p>Javascript sisältää myös oman Error konstruktorifunktion, jonka kentät name eli poikkeuksen <code>nimi</code> ”Error” ja <code>message</code>, joka on siis poikkeuksen kuvaus. Käyttämällä poikkeusten käsittelyyn Error -konstuktoria, käyttäytyvät virheet samalla tavalla kuin Javascriptin omat poikkeukset.</p>
-
-<pre class="prettyprint">
+                <p>Javascript sisältää myös oman Error konstruktorifunktion, jonka kentät name eli poikkeuksen <code>nimi</code> ”Error” ja <code>message</code>, joka on siis poikkeuksen kuvaus. Käyttämällä poikkeusten käsittelyyn Error -konstuktoria, käyttäytyvät virheet samalla tavalla kuin Javascriptin omat poikkeukset.</p>
+                <pre class="prettyprint">
 	try {
 		throw new Error("Poikkeus tapahtunut!");
 	} catch(exception) {
 		alert(exception.message); //Käyttäjälle alert varoitus tekstillä.
 	}</pre>
-
-<p>Ehkäpä paras vaihtoehto virheiden käisttelyyn on käyttää Javascriptin valmista konstruktoria niin paljon kuin vain mahdollista. Mikäli virheen käsittely vaatii muun rakenteen, tehdään sille spesifinen virheen käsittelijä. Tärkeintä poikkeusten käsittelyssä on mahdollisimman tarkka kuvaus tapahtuneen poikkeuksen laadusta ja siihen johtaneista syistä.</p> 
-
-<p>Hyvän tavan mukaisesti poikkeuksia tulisi käyttää vain tilanteisssa, joita ei kuuluisi tapahtua. Poikkeuksia voisi käyttää siis tilanteissa, joissa ohjelman tarvitsema tiedosto on vaikkapa varattu tai muuten vaan ei ole käytettävissä. Poikkeustilanne on siis enemmänkin tilanne, josta ohjelma ei pysty itse toipumaan.</p>
-
-<p>Tilanteita joissa poikkeusta ei tulisi käyttää on vaikkapa käyttäjän syötteen tarkistaminen. Syötteitä voi tarkistaa ilman poikkeustilanteen luomista. Poikkeuksen luominen on kuitenkin suhteellisen raskas toimenpide ja poikkeukset kuormittavat nopeasti ohjelman suoritusta. Jokainen syntyvä poikkeus varaa itselleen resursseja muuttujan luomiseen ja poistamiseen suorituksen aikana</p>
-</div>
-</div>
-<h2 id="viikko3">Viikko 3</h2>
-
-<div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Olioliteraalit</h3>
-                </div>
-                
-                <div class="panel-body">
-                    <p>
-                        Yksi yksinkertaisimmista tavoista luoda olio on olioliteraali. Olioliteraalissa
-                        luodaan jokainen avain-arvo pari ns. käsin yksikerrallaan. Seuraavassa esimerkki
-                        olioliteraalia käyttäen luotavasta oliosta.
-                    </p>
-                    
-<pre class="prettyprint">var literaali = 
+                <p>Ehkäpä paras vaihtoehto virheiden käisttelyyn on käyttää Javascriptin valmista konstruktoria niin paljon kuin vain mahdollista. Mikäli virheen käsittely vaatii muun rakenteen, tehdään sille spesifinen virheen käsittelijä. Tärkeintä poikkeusten käsittelyssä on mahdollisimman tarkka kuvaus tapahtuneen poikkeuksen laadusta ja siihen johtaneista syistä.</p>
+                <p>Hyvän tavan mukaisesti poikkeuksia tulisi käyttää vain tilanteisssa, joita ei kuuluisi tapahtua. Poikkeuksia voisi käyttää siis tilanteissa, joissa ohjelman tarvitsema tiedosto on vaikkapa varattu tai muuten vaan ei ole käytettävissä. Poikkeustilanne on siis enemmänkin tilanne, josta ohjelma ei pysty itse toipumaan.</p>
+                <p>Tilanteita joissa poikkeusta ei tulisi käyttää on vaikkapa käyttäjän syötteen tarkistaminen. Syötteitä voi tarkistaa ilman poikkeustilanteen luomista. Poikkeuksen luominen on kuitenkin suhteellisen raskas toimenpide ja poikkeukset kuormittavat nopeasti ohjelman suoritusta. Jokainen syntyvä poikkeus varaa itselleen resursseja muuttujan luomiseen ja poistamiseen suorituksen aikana</p>
+            </div>
+        </div>
+        <h2 id="olioliteraalitetc">Olioliteraalit, getterit, setterit, aksessorit ja olioiden prototyyppiominaisuudet</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Olioliteraalit</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Yksi yksinkertaisimmista tavoista luoda olio on olioliteraali. Olioliteraalissa luodaan jokainen avain-arvo pari ns. käsin yksikerrallaan. Seuraavassa esimerkki olioliteraalia käyttäen luotavasta oliosta.
+                </p>
+                <pre class="prettyprint">var literaali = 
 	{luku: 3,
 	 avain: "arvo"
 	}</pre>
-		   <p>
-		       Olion sisään voi myös asettaa muita oliota:
-		   </p>
-		   
-<pre class="prettyprint">var literaali = 
+                <p>
+                    Olion sisään voi myös asettaa muita oliota:
+                </p>
+                <pre class="prettyprint">var literaali = 
 	{luku: 3,
 	 avain: "arvo",
 	 toinenOlio: {toinenLuku: 3, toinenAvain: "jargon"},
 	 abstrakti: function() {return luku + 5;}
 	}</pre>
-			<p>
-			    Yllä olevan literaalin sisällä olevaan toiseen olioliteraaliin
-			    pääsee käsiksi <code>var sisaArvo = literaali.toinenOlio.toinenAvain</code>.
-			    Olioita voi laittaa sisäkkäin vaikka kuinka paljon näin. Huomataan myös,
-			    että olioliteraaliin voi laittaa myös árvoksi funktion.
-		       </p>
-		       
-		       <p>
-		            Olioliteraalien avulla tehdyt oliot ovat kaikki käsin tehty, koska niitä
-		            ei luoda konstruktorifunktion avulla, joten useiden olioiden luonti
-		            tällä tavoin on vaivalloista. Hyvä puoli olioliteraaleissa on, että koska
-		            niiden ei tarvitse kutsua konstruktori funktiota ovat ne kevyempiä
-		            suorittaa ja niiden käyttö siinä mielessä helpompaa, että konstruktorifunktiolla
-		            luodussa oliossa pitää muistaa sille annettujen parametrien järjestys. 
-		            Olioliteraalit sopivat esimerkiksi tietueiden luontiin, jotka ovat uniikkeja
-		            ja joita ei tarvitse luoda useampia. Esimerkiksi globaalia dataa voisi pitää
-		            olioliteraalilla tehdyssä oliossa sen hallinnoinnin helpottamiseksi. Olioita
-		            käsittelevät metodit näkevät olion samanlaisena kuin muillakin tavoilla tehdyt oliot.
-		       </p>
-                    
-                </div>
+                <p>
+                    Yllä olevan literaalin sisällä olevaan toiseen olioliteraaliin pääsee käsiksi <code>var sisaArvo = literaali.toinenOlio.toinenAvain</code>. Olioita voi laittaa sisäkkäin vaikka kuinka paljon näin. Huomataan myös, että olioliteraaliin voi laittaa myös árvoksi funktion.
+                </p>
+                <p>
+                    Olioliteraalien avulla tehdyt oliot ovat kaikki käsin tehty, koska niitä ei luoda konstruktorifunktion avulla, joten useiden olioiden luonti tällä tavoin on vaivalloista. Hyvä puoli olioliteraaleissa on, että koska niiden ei tarvitse kutsua konstruktori funktiota ovat ne kevyempiä suorittaa ja niiden käyttö siinä mielessä helpompaa, että konstruktorifunktiolla luodussa oliossa pitää muistaa sille annettujen parametrien järjestys. Olioliteraalit sopivat esimerkiksi tietueiden luontiin, jotka ovat uniikkeja ja joita ei tarvitse luoda useampia. Esimerkiksi globaalia dataa voisi pitää olioliteraalilla tehdyssä oliossa sen hallinnoinnin helpottamiseksi. Olioita käsittelevät metodit näkevät olion samanlaisena kuin muillakin tavoilla tehdyt oliot.
+                </p>
             </div>
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Getterit, setterit ja aksessorit</h3>
-	</div>
-	<div class="panel-body">
-
-	<h4>Getterit ja setterit</h4>
-
-		<p>Getterit ja setterit mahdollistavat olioiden eri ominaisuuksien hakemisen ja muokkaamisen. Gettereillä voi myös muokata palautettavaa arvoa ennen sen palautusta, ja settereillä muokata useita tietokenttiä. Getteri on parametriton funktio, joka palauttaa halutun arvon. Setteri puolestaan on parametrillinen funktio, joka muuttaa halutun olion tietokentän parametrin avulla. Alla olevassa esimerkissä on luotu olio o, jolla on muuttuja a, sekä getteri b, joka palauttaa arvon a+1, ja setteri c(x), joka asettaa a:n arvoksi x/2</p>
-		<pre class="prettyprint">var o = {
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Getterit, setterit ja aksessorit</h3>
+            </div>
+            <div class="panel-body">
+                <h4>Getterit ja setterit</h4>
+                <p>Getterit ja setterit mahdollistavat olioiden eri ominaisuuksien hakemisen ja muokkaamisen. Gettereillä voi myös muokata palautettavaa arvoa ennen sen palautusta, ja settereillä muokata useita tietokenttiä. Getteri on parametriton funktio, joka palauttaa halutun arvon. Setteri puolestaan on parametrillinen funktio, joka muuttaa halutun olion tietokentän parametrin avulla. Alla olevassa esimerkissä on luotu olio o, jolla on muuttuja a, sekä getteri b, joka palauttaa arvon a+1, ja setteri c(x), joka asettaa a:n arvoksi x/2</p>
+                <pre class="prettyprint">var o = {
   a: 7,
   get b() { 
     return this.a + 1;
@@ -780,9 +721,8 @@ console.log(o.a); // 7
 console.log(o.b); // 8
 o.c = 50;
 console.log(o.a); // 25</pre>
-
-		<p>Gettereitä ja settereitä voi kuitenkin määritellä toisellakin tavoin, jolloin niiden kutsuminen muistuttaa enemmän tavallisten muuttujien kutsumista. Alla esimerkit "javamaisilla" gettereillä ja settereillä, ja vaihtoehtoisella toteutuksella:</p>
-<pre class="prettyprint">
+                <p>Gettereitä ja settereitä voi kuitenkin määritellä toisellakin tavoin, jolloin niiden kutsuminen muistuttaa enemmän tavallisten muuttujien kutsumista. Alla esimerkit "javamaisilla" gettereillä ja settereillä, ja vaihtoehtoisella toteutuksella:</p>
+                <pre class="prettyprint">
     function Field(val){
         var value = val;
        
@@ -795,7 +735,7 @@ console.log(o.a); // 25</pre>
         };
     }
 </pre>
-<pre class="prettyprint">
+                <pre class="prettyprint">
     var field = new Field("test");
     field.value
     // => undefined
@@ -803,8 +743,7 @@ console.log(o.a); // 25</pre>
     field.getValue()
     // => "test2"
 </pre>
-
-<pre class="prettyprint">
+                <pre class="prettyprint">
     function Field(val){
         var value = val;
        
@@ -817,8 +756,7 @@ console.log(o.a); // 25</pre>
         });
     }
 </pre>
-
-<pre class="prettyprint">
+                <pre class="prettyprint">
     var field = new Field("test");
     field.value
     // => test
@@ -826,81 +764,76 @@ console.log(o.a); // 25</pre>
     field.value
     // => "test2"
 </pre>
-
-<h4>Aksessorit</h4>
-
-<p>
-	Muuttujan ominaisuuksiin (=property) pääsee käsiksi JS:ssä kahdella tapaa:<br>
-	<b>1)</b> Pistenotaatiolla<br>
-	<b>2)</b> Sulkunotaatiolla<br>
-</p>
-<pre class"prettyprint">
+                <h4>Aksessorit</h4>
+                <p>
+                    Muuttujan ominaisuuksiin (=property) pääsee käsiksi JS:ssä kahdella tapaa:
+                    <br>
+                    <b>1)</b> Pistenotaatiolla
+                    <br>
+                    <b>2)</b> Sulkunotaatiolla
+                    <br>
+                </p>
+                <pre class "prettyprint">
 object.property 	//pistenotaatio
 object["property"] 	//sulkunotaatio
 </pre>
-<p>
-	<b>1) Pistenotaatiolla get ja set näyttävät seuraavanlaisilta:</b>
-</p>
-<pre class="prettyprint">
+                <p>
+                    <b>1) Pistenotaatiolla get ja set näyttävät seuraavanlaisilta:</b>
+                </p>
+                <pre class="prettyprint">
 get = object.property;	//object on näissä esimerkeissä oliomuuttujan nimi
 object.property = set;
 </pre>
-<p>
-	Pistenotaatiota käytettäessä, <i>property</i> täytyy olla validi JavaScriptin tunniste (=identifier),
-	eli sen täytyy koostua alfanumeerisista merkeistä (mukaanlukien "_" ja "$"), eikä se voi alkaa numerolla.
-</p>
-<pre class="prettyprint">
+                <p>
+                    Pistenotaatiota käytettäessä, <i>property</i> täytyy olla validi JavaScriptin tunniste (=identifier), eli sen täytyy koostua alfanumeerisista merkeistä (mukaanlukien "_" ja "$"), eikä se voi alkaa numerolla.
+                </p>
+                <pre class="prettyprint">
 object.$1	//$1 on validi tunniste
 object.1	//1 on epävalidi tunniste, sillä se alkaa numerolla
 </pre>
-<p>
-	Funktion kutsu pistenotaatiolla:
-</p>
-<pre class="prettyprint">
+                <p>
+                    Funktion kutsu pistenotaatiolla:
+                </p>
+                <pre class="prettyprint">
 //funktio createElement noudetaan document -oliosta, ja sitä kutsutaan parametrilla 'pre'
 document.createElement('pre');	
 </pre>
-<p>
-	<b>2) Sulkunotaatiolla get ja set näyttävät seuraavanlaisilta</b>
-</p>
-<pre class="">
+                <p>
+                    <b>2) Sulkunotaatiolla get ja set näyttävät seuraavanlaisilta</b>
+                </p>
+                <pre class="">
 get = object[property_name];
 object[property_name] = set;
 document['createElement']('pre');	//funktio-ominaisuuden haku ja suoritus sulkunotaatiolla
 </pre>
-<p>
-	<i>property_name</i> on stringi. Sulkunotaatiota käytettäessä muuttujan ominaisuuden nimi/avain/tunniste
-	ei tarvitse olla validi JavaScriptin tunniste; se voi siis olla esim <i>1foo</i>, <i>!bar!</i>, tai jopa " "(välilyönti).
-	Ominaisuuden nimi/avain/tunniste täytyy kuitenkin olla stringi. Jos tunnisteena yritetään käyttää jotain muuta kuin <i>String</i>
-	 -tyyppistä muuttujaa, niin se automaattisesti typecastataan stringiksi <i>toString</i> -metodilla:
-</p>
-<pre class="prettyprint">
+                <p>
+                    <i>property_name</i> on stringi. Sulkunotaatiota käytettäessä muuttujan ominaisuuden nimi/avain/tunniste ei tarvitse olla validi JavaScriptin tunniste; se voi siis olla esim <i>1foo</i>, <i>!bar!</i>, tai jopa " "(välilyönti). Ominaisuuden nimi/avain/tunniste täytyy kuitenkin olla stringi. Jos tunnisteena yritetään käyttää jotain muuta kuin <i>String</i> -tyyppistä muuttujaa, niin se automaattisesti typecastataan stringiksi <i>toString</i> -metodilla:
+                </p>
+                <pre class="prettyprint">
 var object = {};
 object['1'] = 'arvo';
 console.log(object[1]);	//1 typecastataan stringiksi
 //=> "arvo"
 </pre>
-<pre class="prettyprint">
+                <pre class="prettyprint">
 var foo = {ominaisuus1: 1}, bar = {ominaisuus2: 2}, object = {};
 object[foo] = 'arvo';
 console.log(object[bar]);
 //=> "arvo"
 </pre>
-<p>Yllä oleva esimerkki palauttaa "arvo", koska sekä <i>foo</i> että <i>bar</i> muuttuvat samaksi
-stringiksi <i>toString</i> -metodilla. Tämä stringi on "[object Object]"
-</p>
-	</div>
-</div>
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Olioiden prototyyppiominaisuudet</h3>
-	</div>
-	<div class="panel-body">
-		<p>Javascript sallii ominaisuuksien sitomisen suoraan konstruktorifunktion prototyyppiolio. Tämä on sikäli hyödyllinen (mutta samalla vaarallinen omaisuus), että kaikilla samalla konstruktorilla luodulta olioilta löytyvät yhteiset ominaisuudet niiden yhteisestä prototyyppiolioista.</p>
-		<b>Hyödyt:</b>
-		<p>Halutaan jakaa jokin arvo tai funktio olioiden kesken ilman, että jokaiseen olioon on tarve luoda omaa kopiota halutusta ominaisuudesta.</p>
-<pre class="prettyprint">
+                <p>Yllä oleva esimerkki palauttaa "arvo", koska sekä <i>foo</i> että <i>bar</i> muuttuvat samaksi stringiksi <i>toString</i> -metodilla. Tämä stringi on "[object Object]"
+                </p>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Olioiden prototyyppiominaisuudet</h3>
+            </div>
+            <div class="panel-body">
+                <p>Javascript sallii ominaisuuksien sitomisen suoraan konstruktorifunktion prototyyppiolio. Tämä on sikäli hyödyllinen (mutta samalla vaarallinen omaisuus), että kaikilla samalla konstruktorilla luodulta olioilta löytyvät yhteiset ominaisuudet niiden yhteisestä prototyyppiolioista.</p>
+                <b>Hyödyt:</b>
+                <p>Halutaan jakaa jokin arvo tai funktio olioiden kesken ilman, että jokaiseen olioon on tarve luoda omaa kopiota halutusta ominaisuudesta.</p>
+                <pre class="prettyprint">
 	function Piste(x,y) {
   		this.x = x;
   		this.y = y;
@@ -910,29 +843,24 @@ stringiksi <i>toString</i> -metodilla. Tämä stringi on "[object Object]"
 	var b = new Piste(3.14, 2.8)
 	console.log(b.tulo()) //8.792
 </pre>
-<b>Haitat:</b> 
-<p>Mikäli jokin olio menee muuttamaan prototyyppiolion arvoa, muuttuu arvo siis myös muille prototyyppiolion konstruktorilla rakennetuille olioille. Tällöin voi vahingossa käydä niin, että muutetaankin arvoa, joka ei saisi muuttua jonkin toisen olion ominaisuuksissa.</p>
-
-<b>Ohjelmointityyli:</b>
-<p>Hyvä ohjelmointityyli prototyyppiperiytymisen hyödyntämiseen on ohjelmoida prototyyppiolioon vain sellaisia funktioita ja arvoja joiden muuttaminen tai kutsuminen on sallittavaa kaikille prototyyppiolion konstruktorilla luodulla olioille. Ei siis luoda jotain ominaisuutta, jonka muuttaminen voisi vaikuttaa monen olion lopputulokseen eri tavoilla.</p>
-
-</div>
-</div>
-<h2 id="viikko4">Viikko 4</h2>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">I hope"! ;-)</h3>
-	</div>
-	<div class="panel-body">
-<p>
-Ohjelmoinnissa tulee useinkin vastaan tilanteita, joissa ohjelmakoodi toistuu perin samanlaisena useassa kohdassa. Hyvän ohjelmointitavan mukaista on välttää copy-paste tyylistä ohjelmointia, jossa tarvittava koodi vain kopioidaan sinne missä sitä tarvitaan, vaikka se löytyisikin jo toisesta paikasta aivan samanlaisena.</p>
-
-<p>Hyvä ohjelmointitapa myös Javascriptissa on uudelleenkäyttää koodia ja välttää näin kopioimista. Yksi hyvä tapa jo valmiin koodin käyttöön on javascriptin prototyyppeihin perustuva perintä. Perintä on yksi keino, jonka avulla voidaan välttyä kirjoittamasta jo kerran kirjoitettua koodia uudestaan. Jos perintää ei erikseen määritellä niin luotu olio perii Objectin prototyyppiolion.</p>
-
-<p>Jokaisella oliolla on oma prototyyppinsä, jonka se on perinyt oliota luodessa. Prototyyppi perintä jatkuu ketjumaisesti aina Object-olion prototyyppikenttään, joka viittaa tyhjään arvoon ”<code>null</code>”. Prototyyppiketju voidaan myös siis katkaista lisäämällä olion prototyyppikentän arvoksi ”<code>null</code>”.</p>
-
-<p>Prototyyppi perintää hyödynnettäessä ohjelmointi suoritetaan niin että perittävät arvot ja funktiot sijoitetaan aina ylemmälle tasolle eli siirrytään ylöspäin prototyyppiketjussa. Esimerkkinä tästä voisi siis olla:</p>
-<pre class="prettyprint">
+                <b>Haitat:</b>
+                <p>Mikäli jokin olio menee muuttamaan prototyyppiolion arvoa, muuttuu arvo siis myös muille prototyyppiolion konstruktorilla rakennetuille olioille. Tällöin voi vahingossa käydä niin, että muutetaankin arvoa, joka ei saisi muuttua jonkin toisen olion ominaisuuksissa.</p>
+                <b>Ohjelmointityyli:</b>
+                <p>Hyvä ohjelmointityyli prototyyppiperiytymisen hyödyntämiseen on ohjelmoida prototyyppiolioon vain sellaisia funktioita ja arvoja joiden muuttaminen tai kutsuminen on sallittavaa kaikille prototyyppiolion konstruktorilla luodulla olioille. Ei siis luoda jotain ominaisuutta, jonka muuttaminen voisi vaikuttaa monen olion lopputulokseen eri tavoilla.</p>
+            </div>
+        </div>
+        <h2 id="toistonvaltto">Prototyyppisen perinnän käyttö copy-paste -koodin välttämiseksi</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">I hope"! ;-)</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Ohjelmoinnissa tulee useinkin vastaan tilanteita, joissa ohjelmakoodi toistuu perin samanlaisena useassa kohdassa. Hyvän ohjelmointitavan mukaista on välttää copy-paste tyylistä ohjelmointia, jossa tarvittava koodi vain kopioidaan sinne missä sitä tarvitaan, vaikka se löytyisikin jo toisesta paikasta aivan samanlaisena.</p>
+                <p>Hyvä ohjelmointitapa myös Javascriptissa on uudelleenkäyttää koodia ja välttää näin kopioimista. Yksi hyvä tapa jo valmiin koodin käyttöön on javascriptin prototyyppeihin perustuva perintä. Perintä on yksi keino, jonka avulla voidaan välttyä kirjoittamasta jo kerran kirjoitettua koodia uudestaan. Jos perintää ei erikseen määritellä niin luotu olio perii Objectin prototyyppiolion.</p>
+                <p>Jokaisella oliolla on oma prototyyppinsä, jonka se on perinyt oliota luodessa. Prototyyppi perintä jatkuu ketjumaisesti aina Object-olion prototyyppikenttään, joka viittaa tyhjään arvoon ”<code>null</code>”. Prototyyppiketju voidaan myös siis katkaista lisäämällä olion prototyyppikentän arvoksi ”<code>null</code>”.</p>
+                <p>Prototyyppi perintää hyödynnettäessä ohjelmointi suoritetaan niin että perittävät arvot ja funktiot sijoitetaan aina ylemmälle tasolle eli siirrytään ylöspäin prototyyppiketjussa. Esimerkkinä tästä voisi siis olla:</p>
+                <pre class="prettyprint">
 function Graph() {
   this.vertices = [];
   this.edges = [];
@@ -946,8 +874,8 @@ Graph.prototype = {
 
 var g = new Graph();
 </pre>
-<b>Object.create komennon avulla perintää voi suorittaa näin:</b>
-<pre class="prettyprint">
+                <b>Object.create komennon avulla perintää voi suorittaa näin:</b>
+                <pre class="prettyprint">
 var a = {a: 1}; 
 // a ---> Object.prototype ---> null
 
@@ -963,11 +891,8 @@ var d = Object.create(null);
 console.log(d.hasOwnProperty); 
 // undefined, because d doesn't inherit from Object.prototype
 </pre>
-
-
-
-<b>ECMAScript 6  esitteli uuden luokka tyylisen perinnän:</b>
-<pre class="prettyprint">
+                <b>ECMAScript 6  esitteli uuden luokka tyylisen perinnän:</b>
+                <pre class="prettyprint">
 class Polygon {
   constructor(height, width) {
     this.height = height;
@@ -989,18 +914,22 @@ class Square extends Polygon {
 }
 
 var square = new Square(2);</pre>
-<p>Olio-ohjelmoinnin ytimessä on ohjelmoitavan tapauksen analysointi sekä luontevampi mallintaminen ja koodin jäsentely. Usein koodin oliot vastaavat jotakin tosielämän mallinnettavaa oliota. Tällöin olioiden suhteet toisiinsa on helpompi hahmottaa tarkastelemalla mallinnettavaa tapausta, sekä koodin lukeminen ja muokkaaminen on yksinkertaisempaa jatkossa.</p>
-<p>Koodin turhan toistamisen kannalta tehokkainta on analysoida, mitkä ominaisuudet kuuluvat kaikille samantyyppisille olioille, ja lisätä kyseiset oletusarvot ja funktiot prototyyppiolioon. Tällöin yhteiset arvot ja toiminnot voidaan periä prototyyppioliosta, ilman että niitä tarvitsee uudestaan määritellä kullekin olion ilmentymälle.</p>
-	</div>
-</div>
-
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files 	as needed -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Javascript code prettifier -->
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+                <p>Olio-ohjelmoinnin ytimessä on ohjelmoitavan tapauksen analysointi sekä luontevampi mallintaminen ja koodin jäsentely. Usein koodin oliot vastaavat jotakin tosielämän mallinnettavaa oliota. Tällöin olioiden suhteet toisiinsa on helpompi hahmottaa tarkastelemalla mallinnettavaa tapausta, sekä koodin lukeminen ja muokkaaminen on yksinkertaisempaa jatkossa.</p>
+                <p>Koodin turhan toistamisen kannalta tehokkainta on analysoida, mitkä ominaisuudet kuuluvat kaikille samantyyppisille olioille, ja lisätä kyseiset oletusarvot ja funktiot prototyyppiolioon. Tällöin yhteiset arvot ja toiminnot voidaan periä prototyyppioliosta, ilman että niitä tarvitsee uudestaan määritellä kullekin olion ilmentymälle.</p>
+            </div>
+        </div>
+        <!-- End of mainCol -->
+        </div>
+        <!-- End of row div -->
+        </div>
+        <!-- End of mainBody -->
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files 	as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Javascript code prettifier -->
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 </body>
 
 </html>

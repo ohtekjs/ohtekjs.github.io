@@ -7,6 +7,11 @@ h3,h2 {
 	font-weight: bold;
 }
 
+h2 {
+	padding-top: 60px;
+	padding-bottom: 30px;
+}
+
 h4 {
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -33,4 +38,13 @@ output {
 	padding-top: 10px;
 }
 
+  #sidebar{
+    position: fixed;
+  	margin-top:10px;
+  	width:228px;
+  }
 
+#sidebar li.active {
+  	border:0 #eee solid;
+  	border-right-width:4px;
+}
